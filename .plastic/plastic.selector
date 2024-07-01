@@ -1,0 +1,4 @@
+repository "Slime_Saga@YammCR@cloud"
+  path "/"
+    br "/main"
+    co "/main"
