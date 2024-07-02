@@ -246,7 +246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f354ca7ea4ab43249af1d6727cc3c9a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slimeRigidBody: {fileID: 0}
+  myrigidBody: {fileID: 1716107344}
+  speed: 5
 --- !u!212 &1716107342
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -329,7 +330,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
