@@ -4,19 +4,43 @@ using UnityEngine;
 
 public class SlimePlayer : MonoBehaviour
 {
-    public Rigidbody2D myrigidBody;
+    public Rigidbody2D myRigidbody;
     public float speed = 5.0f;
-    Vector2 movement;
+    public float jumpForce = 25.0f;
+    private int jumpCount;
+    private bool isGrounded;
 
-    // Update is called once per frame
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        // Handle horizontal movement
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        Vector2 movement = new Vector2(moveHorizontal * speed, myRigidbody.velocity.y);
+        myRigidbody.velocity = movement;
+
+        // Handle jumping
+        if (Input.GetButtonDown("Jump") && jumpCount < 2)
+        {
+            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0); // Reset vertical velocity before jumping
+            myRigidbody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            jumpCount++;
+        }
     }
 
-    void FixedUpdate()
+    // Check if the character is grounded
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        myrigidBody.MovePosition(myrigidBody.position+movement*speed*Time.fixedDeltaTime);
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+            jumpCount = 0; // Reset jump count when grounded
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
     }
 }
