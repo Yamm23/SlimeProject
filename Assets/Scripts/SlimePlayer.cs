@@ -20,9 +20,11 @@ public class SlimePlayer : MonoBehaviour
         // Handle jumping
         if (Input.GetButtonDown("Jump") && jumpCount < 2)
         {
+            Debug.Log("Jump button pressed. Current jump count: " + jumpCount);
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0); // Reset vertical velocity before jumping
             myRigidbody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             jumpCount++;
+            Debug.Log("Jump executed. New jump count: " + jumpCount);
         }
     }
 
