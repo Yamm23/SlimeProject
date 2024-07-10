@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 191021528}
   - component: {fileID: 191021531}
   - component: {fileID: 191021532}
+  - component: {fileID: 191021533}
   m_Layer: 0
   m_Name: Slime Character
   m_TagString: Untagged
@@ -211,7 +212,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7f80190987e0f284ea3fd8fe384c42c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afd793b1787964e44aa4ce39e16e5bcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -287,6 +288,27 @@ CapsuleCollider2D:
   m_Offset: {x: -0.06283978, y: -0.31224397}
   m_Size: {x: 5.2641706, y: 2.9562688}
   m_Direction: 1
+--- !u!95 &191021533
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191021527}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7e08ce51ae640f641a0aec9495546740, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &191584357
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,8 +993,8 @@ Tilemap:
   - first: {x: 40, y: 0, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1121,8 +1143,8 @@ Tilemap:
   - first: {x: 55, y: 0, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5604,11 +5626,11 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: df5199ed9f6747741a82232e8d4846aa, type: 2}
   - m_RefCount: 20
     m_Data: {fileID: 11400000, guid: 37536a3762fabca42aa05a285f789685, type: 2}
-  - m_RefCount: 3
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: bf01b27123da44d448ffe8fdeafcf79d, type: 2}
   - m_RefCount: 120
     m_Data: {fileID: 11400000, guid: 1e3a231ab0b7f2140bfe2fa09aec82ac, type: 2}
-  - m_RefCount: 54
+  - m_RefCount: 52
     m_Data: {fileID: 11400000, guid: 90af4a741d22fdb459fb572ea64196b6, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: b9d8b9b8221169645946713b4c6610a8, type: 2}
@@ -5629,11 +5651,11 @@ Tilemap:
     m_Data: {fileID: -1396559522, guid: 68a0f7f8780e3d543950d468a0f9dbdd, type: 3}
   - m_RefCount: 20
     m_Data: {fileID: 1318606034, guid: 68a0f7f8780e3d543950d468a0f9dbdd, type: 3}
-  - m_RefCount: 3
+  - m_RefCount: 5
     m_Data: {fileID: 670512886, guid: 68a0f7f8780e3d543950d468a0f9dbdd, type: 3}
   - m_RefCount: 120
     m_Data: {fileID: 1556567423, guid: 68a0f7f8780e3d543950d468a0f9dbdd, type: 3}
-  - m_RefCount: 54
+  - m_RefCount: 52
     m_Data: {fileID: 292117725, guid: 68a0f7f8780e3d543950d468a0f9dbdd, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -526785324, guid: 68a0f7f8780e3d543950d468a0f9dbdd, type: 3}
@@ -63466,6 +63488,38 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1 &1198098761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198098762}
+  m_Layer: 0
+  m_Name: Monsters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1198098762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198098761}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.1450543, y: -3.459652, z: -1.0347487}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1340314201}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1340314199
 GameObject:
   m_ObjectHideFlags: 0
@@ -63477,7 +63531,7 @@ GameObject:
   - component: {fileID: 1340314201}
   - component: {fileID: 1340314200}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: SkeletonEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63543,12 +63597,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340314199}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.28, y: -3.55, z: -1.1102526}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.1349454, y: -0.090348005, z: -0.075503945}
   m_LocalScale: {x: 7.91, y: 7.86, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1198098762}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1439594875
 GameObject:
@@ -63676,5 +63730,5 @@ SceneRoots:
   - {fileID: 191584360}
   - {fileID: 1505164368}
   - {fileID: 191021530}
-  - {fileID: 1340314201}
   - {fileID: 1439594877}
+  - {fileID: 1198098762}
