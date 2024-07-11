@@ -9,6 +9,7 @@ public class SlimePlayer : MonoBehaviour
     public float jumpForce = 25.0f;
     private int jumpCount;
     private bool isGrounded;
+    public Animator slimeanimator;
 
     void Update()
     {
@@ -16,6 +17,7 @@ public class SlimePlayer : MonoBehaviour
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         Vector2 movement = new Vector2(moveHorizontal * speed, myRigidbody.velocity.y);
         myRigidbody.velocity = movement;
+        slimeanimator.SetFloat("HorizontalSpeed", Mathf.Abs(moveHorizontal));
 
         // Handle jumping
         if (Input.GetButtonDown("Jump") && jumpCount < 2)

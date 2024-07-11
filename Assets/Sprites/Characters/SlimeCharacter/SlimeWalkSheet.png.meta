@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 28e4439923c55334e917d74de33297be
+guid: fcdbe88ec7a15ea4bb5c8e0432afc5ae
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SlimeWalk_0
+      name: SlimeWalkSheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 160
         width: 64
-        height: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2927884003506b40b029960cf96d4e2
-      internalID: -1519112137
+      spriteID: 8dd9df5bd072f064fb2d33f6d320bfb5
+      internalID: -1582010421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeWalk_1
+      name: SlimeWalkSheet_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 128
+        y: 160
         width: 64
-        height: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 937ec1b286e3a914690ba8b9bbb4ec98
-      internalID: 1868102280
+      spriteID: cec630187e31d3d4b913cd1a4422fa9d
+      internalID: -270046928
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeWalk_2
+      name: SlimeWalkSheet_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
+        y: 160
         width: 64
-        height: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edfd1ab343fe2c044983f972e4b66f96
-      internalID: 378345096
+      spriteID: fb554f8e7b745b34d969cc7e4fb659d7
+      internalID: 1284028513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeWalk_3
+      name: SlimeWalkSheet_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 80
         width: 64
-        height: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2dca29050bee094fb348eeae7c52a56
-      internalID: 1393222678
+      spriteID: 0b26d9f9b5144f049a12755ce9986019
+      internalID: -1532560048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeWalk_4
+      name: SlimeWalkSheet_4
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 80
         width: 64
-        height: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 717c0352ad39894489591516094afdd0
-      internalID: 2009607281
+      spriteID: fbfe9ad20f199924a83698d1a6514a8c
+      internalID: 309994467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeWalk_5
+      name: SlimeWalkSheet_5
       rect:
         serializedVersion: 2
         x: 128
-        y: 64
+        y: 80
         width: 64
-        height: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 320ae4a24eb0b08438ef1176abc3baa7
-      internalID: 766051534
+      spriteID: 07609a4fd6e68ea488bd4b00ab68dcf2
+      internalID: -486518457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeWalk_6
+      name: SlimeWalkSheet_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 64
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0ee76016ef25734391b55a100cbcc0e
-      internalID: -1492851673
+      spriteID: 35aed446c1939724d8d092c7e449ba31
+      internalID: 1670105204
       vertices: []
       indices: 
       edges: []
@@ -267,13 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SlimeWalk_0: -1519112137
-      SlimeWalk_1: 1868102280
-      SlimeWalk_2: 378345096
-      SlimeWalk_3: 1393222678
-      SlimeWalk_4: 2009607281
-      SlimeWalk_5: 766051534
-      SlimeWalk_6: -1492851673
+      SlimeWalkSheet_0: -1582010421
+      SlimeWalkSheet_1: -270046928
+      SlimeWalkSheet_2: 1284028513
+      SlimeWalkSheet_3: -1532560048
+      SlimeWalkSheet_4: 309994467
+      SlimeWalkSheet_5: -486518457
+      SlimeWalkSheet_6: 1670105204
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

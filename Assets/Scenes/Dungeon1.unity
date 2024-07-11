@@ -214,12 +214,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2077266233, guid: 52a8838621b3dc94a86bf7da6b072f99, type: 3}
+  m_Sprite: {fileID: 2044388190, guid: 9a65f58830f431142a5b9ff745c4465d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 0.8, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -255,6 +255,7 @@ MonoBehaviour:
   myRigidbody: {fileID: 191021528}
   speed: 8
   jumpForce: 25
+  slimeanimator: {fileID: 191021533}
 --- !u!95 &191021533
 Animator:
   serializedVersion: 5
