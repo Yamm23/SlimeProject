@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a0f89cc5a7b354f489a11ff9f8a501bb
+guid: 5cc3cbb6fe0ceb845afd096922931664
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SlimeJump_0
+      name: SlimeJumpSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0afac1aab1881584b8c90fb42e5571f1
-      internalID: 1046504838
+      spriteID: 5ce7b782a46cfdd4db5c96e26a32dafa
+      internalID: 883865964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeJump_1
+      name: SlimeJumpSheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b443a0e72a9edc6458ba8bf54eac6ee7
-      internalID: 1312073592
+      spriteID: d210a93e068a149418514334085d085a
+      internalID: -1036879100
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeJump_2
+      name: SlimeJumpSheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62bf0296ed762fe4198942680b4e6e3d
-      internalID: -1922244515
+      spriteID: 499722d59aafb704a850daf30b3043ef
+      internalID: 1862767703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeJump_3
+      name: SlimeJumpSheet_3
       rect:
         serializedVersion: 2
         x: 0
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b88df0740226ede42b5a0ba7214d71c5
-      internalID: -526825201
+      spriteID: 088e7a7c00a1a874e85ba1aa5ac5dee4
+      internalID: 307614739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeJump_4
+      name: SlimeJumpSheet_4
       rect:
         serializedVersion: 2
         x: 64
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 028ddd7b93708a94c95d7a1089bc2b3a
-      internalID: -1017240291
+      spriteID: 5fc0019f65fe16b46928990fe131de4c
+      internalID: -492178921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeJump_5
+      name: SlimeJumpSheet_5
       rect:
         serializedVersion: 2
         x: 128
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17052e2a319b2fd42a1fcabacac04a1a
-      internalID: 215843528
+      spriteID: ac8a332efb8422641bf3b7faad3c0174
+      internalID: -1178697198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeJump_6
+      name: SlimeJumpSheet_6
       rect:
         serializedVersion: 2
         x: 0
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 426b86b127522484aad4b22832dcda18
-      internalID: 1960842967
+      spriteID: 6b178e281f8d1354baed5a6b78b93961
+      internalID: -2075947761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeJump_7
+      name: SlimeJumpSheet_7
       rect:
         serializedVersion: 2
         x: 64
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a8a5ac50e4777843b09246c6f401c93
-      internalID: 286632887
+      spriteID: eb7da3349975bed45b304eb2c2ea6557
+      internalID: -1960629406
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeJump_8
+      name: SlimeJumpSheet_8
       rect:
         serializedVersion: 2
         x: 128
@@ -292,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8100542c877497a49915e0396cb1f1cc
-      internalID: 1889990467
+      spriteID: 9f44e13bdfbecb24bab5c50ef9b09574
+      internalID: -976165080
       vertices: []
       indices: 
       edges: []
@@ -309,15 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SlimeJump_0: 1046504838
-      SlimeJump_1: 1312073592
-      SlimeJump_2: -1922244515
-      SlimeJump_3: -526825201
-      SlimeJump_4: -1017240291
-      SlimeJump_5: 215843528
-      SlimeJump_6: 1960842967
-      SlimeJump_7: 286632887
-      SlimeJump_8: 1889990467
+      SlimeJumpSheet_0: 883865964
+      SlimeJumpSheet_1: -1036879100
+      SlimeJumpSheet_2: 1862767703
+      SlimeJumpSheet_3: 307614739
+      SlimeJumpSheet_4: -492178921
+      SlimeJumpSheet_5: -1178697198
+      SlimeJumpSheet_6: -2075947761
+      SlimeJumpSheet_7: -1960629406
+      SlimeJumpSheet_8: -976165080
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
