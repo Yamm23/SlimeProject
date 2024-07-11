@@ -7,8 +7,8 @@ public class SlimePlayer : MonoBehaviour
     public Rigidbody2D myRigidbody;
     public float speed = 5.0f;
     public float jumpForce = 25.0f;
-    private int jumpCount;
-    private bool isGrounded;
+    private int jumpCount = 0;
+    private bool isGrounded = true;
     public Animator slimeanimator;
 
     void Update()
@@ -20,13 +20,14 @@ public class SlimePlayer : MonoBehaviour
         slimeanimator.SetFloat("HorizontalSpeed", Mathf.Abs(moveHorizontal));
 
         // Handle jumping
-        if (Input.GetButtonDown("Jump") && jumpCount < 2)
+        if (Input.GetButtonDown("Jump") && (isGrounded || jumpCount < 2))
         {
-            Debug.Log("Jump button pressed. Current jump count: " + jumpCount);
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0); // Reset vertical velocity before jumping
             myRigidbody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             jumpCount++;
-            Debug.Log("Jump executed. New jump count: " + jumpCount);
+            isGrounded = false; // Player is no longer grounded
+            slimeanimator.SetBool("IsJumping", true);
+            Debug.Log("Jump button pressed. Current jump count: " + jumpCount);
         }
     }
 
@@ -37,6 +38,7 @@ public class SlimePlayer : MonoBehaviour
         {
             isGrounded = true;
             jumpCount = 0; // Reset jump count when grounded
+            slimeanimator.SetBool("IsJumping", false);
         }
     }
 
