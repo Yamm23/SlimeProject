@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimePlayer : MonoBehaviour
+public class SlimeMovement : MonoBehaviour
 {
     public Rigidbody2D myRigidbody;
-    public float speed = 5.0f;
+    public float speed = 8.0f;
     public float jumpForce = 25.0f;
     private int jumpCount = 0;
     private bool isGrounded = true;
     public Animator slimeanimator;
 
-    void Update()
+    public void Awake()
+    {
+        myRigidbody = GetComponent<Rigidbody2D>();
+    }
+    public void HandleMovement()
     {
         // Handle horizontal movement
         float moveHorizontal = Input.GetAxisRaw("Horizontal");

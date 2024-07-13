@@ -3641,8 +3641,10 @@ GameObject:
   m_Component:
   - component: {fileID: 191021530}
   - component: {fileID: 191021529}
+  - component: {fileID: 191021540}
+  - component: {fileID: 191021539}
+  - component: {fileID: 191021538}
   - component: {fileID: 191021528}
-  - component: {fileID: 191021531}
   - component: {fileID: 191021533}
   - component: {fileID: 191021534}
   - component: {fileID: 191021536}
@@ -3749,22 +3751,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &191021531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191021527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f354ca7ea4ab43249af1d6727cc3c9a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myRigidbody: {fileID: 191021528}
-  speed: 8
-  jumpForce: 25
-  slimeanimator: {fileID: 191021533}
 --- !u!95 &191021533
 Animator:
   serializedVersion: 5
@@ -3926,6 +3912,50 @@ CircleCollider2D:
   m_Offset: {x: -0.03, y: 0.06}
   serializedVersion: 2
   m_Radius: 0.06
+--- !u!114 &191021538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191021527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f331efcb40c0c3347844a7c59d2263d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  CurrentHealth: 0
+  MaxHearts: 3
+  CurrentHearts: 0
+--- !u!114 &191021539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191021527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f354ca7ea4ab43249af1d6727cc3c9a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myRigidbody: {fileID: 191021528}
+  speed: 5
+  jumpForce: 25
+  slimeanimator: {fileID: 191021533}
+--- !u!114 &191021540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191021527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ece4cee279f501469e70eef322e48c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &191584357
 GameObject:
   m_ObjectHideFlags: 0
@@ -9687,6 +9717,7 @@ GameObject:
   - component: {fileID: 601058019}
   - component: {fileID: 601058021}
   - component: {fileID: 601058020}
+  - component: {fileID: 601058022}
   m_Layer: 0
   m_Name: Traps
   m_TagString: Untagged
@@ -9850,6 +9881,42 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &601058022
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601058018}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &644848523
 GameObject:
   m_ObjectHideFlags: 3
