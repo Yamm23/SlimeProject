@@ -38,17 +38,18 @@ public class SlimeMovement : MonoBehaviour
     // Check if the character is grounded
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground")||collision.gameObject.CompareTag("Trap"))
         {
             isGrounded = true;
             jumpCount = 0; // Reset jump count when grounded
             slimeanimator.SetBool("IsJumping", false);
+
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground")||collision.gameObject.CompareTag("Trap"))
         {
             isGrounded = false;
         }

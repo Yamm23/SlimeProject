@@ -6,18 +6,20 @@ public class SlimeHealth : MonoBehaviour
 {
     public int MaxHealth = 100;   
     public int CurrentHealth;
-    public int MaxHearts = 3;
-    public int CurrentHearts;
-    // Start is called before the first frame update
+    //public int MaxHearts = 3;
+    //public int CurrentHearts;
+    public HealthBar healthBar;
     public void Start()
     {
         CurrentHealth = MaxHealth;
+        healthBar.SetMaxHealth(MaxHealth);
         //CurrentHearts = MaxHearts;
     }
 
     public void TakeDamage(int DamageAmount)
     {
         CurrentHealth -= DamageAmount;
+        healthBar.setHealth(CurrentHealth);
         if (CurrentHealth < 0)
         {
             Die();

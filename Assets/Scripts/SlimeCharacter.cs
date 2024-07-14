@@ -17,6 +17,7 @@ public class Slime : MonoBehaviour
     {
         // Call update methods on the individual components if needed
         slimeMovement.HandleMovement();
+        
     }
 }
 
