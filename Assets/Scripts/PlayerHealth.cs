@@ -12,19 +12,19 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         CurrentHealth = MaxHealth;
-        CurrentHearts = MaxHearts;
+        //CurrentHearts = MaxHearts;
     }
-
+ 
     void TakeDamage(int DamageAmount)
     {
         CurrentHealth -= DamageAmount;
-        if (CurrentHealth < 0)
-        {
-            CurrentHearts -= 1;
-            ;if (CurrentHearts <= 0)
-            {
-                //GameOver
-            }
-        }
+        //if (CurrentHealth < 0)
+        //{
+        //    CurrentHearts -= 1;
+        //    ;if (CurrentHearts <= 0)
+        //    {
+        //        //GameOver
+        //    }
+        //}
     }
 }

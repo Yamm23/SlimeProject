@@ -5,10 +5,12 @@ using UnityEngine;
 public class Slime : MonoBehaviour
 {
     private SlimeMovement slimeMovement;
+    private SlimeHealth slimeHealth;
 
     void Awake()
     {
         slimeMovement = GetComponent<SlimeMovement>();
+        slimeHealth = GetComponent<SlimeHealth>();
     }
 
     void Update()
