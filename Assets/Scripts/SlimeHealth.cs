@@ -10,7 +10,8 @@ public class SlimeHealth : MonoBehaviour
     //public int CurrentHearts;
     public HealthBar healthBar;
     public int damageCount=0;
-    public bool isTouchingTrap=false;
+    public float damageCooldown = 1.0f; // Cooldown time in seconds
+    private bool canTakeDamage = true;
 
     public void Start()
     {
@@ -35,12 +36,19 @@ public class SlimeHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Trap")&&damageCount<=1) {
+        if (collision.collider.CompareTag("Trap") && canTakeDamage) {
             TakeDamage(10);
             damageCount++;
             Debug.Log($"NoOfTimes{damageCount}");
             Debug.Log("DamageTakenFromTrap");
+            StartCoroutine(DamageCooldown());
 
         }
+    }
+    private IEnumerator DamageCooldown()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(damageCooldown);
+        canTakeDamage = true;
     }
 }
