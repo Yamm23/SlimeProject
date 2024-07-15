@@ -1,50 +1,56 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SlimeHealth : MonoBehaviour
 {
-    public int MaxHealth = 100;   
-    public int CurrentHealth;
-    //public int MaxHearts = 3;
-    //public int CurrentHearts;
-    public HealthBar healthBar;
-    public int damageCount=0;
-    public float damageCooldown = 1.0f; // Cooldown time in seconds
-    private bool canTakeDamage = true;
+    public int maxHealth = 100; // Maximum health of the slime
+    private int currentHealth;  // Current health of the slime
+    public HealthBar healthBar; // Reference to the health bar UI element
 
-    public void Start()
+    private int damageCount = 0; // Counter for the number of times damage is taken
+    private bool canTakeDamage = true; // Flag to control damage cooldown
+    public float damageCooldown = 1.0f; // Cooldown time in seconds
+
+    void Start()
     {
-        CurrentHealth = MaxHealth;
-        healthBar.SetMaxHealth(MaxHealth);
-        //CurrentHearts = MaxHearts;
+        // Initialize current health to max health at the start
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
-    public void TakeDamage(int DamageAmount)
+    // Method to apply damage to the slime
+    public void TakeDamage(int damageAmount)
     {
-        CurrentHealth -= DamageAmount;
-        healthBar.setHealth(CurrentHealth);
-        if (CurrentHealth <= 0)
+        currentHealth -= damageAmount;
+        currentHealth = Mathf.Max(currentHealth, 0); // Ensure health does not go below zero
+        healthBar.setHealth(currentHealth);
+
+        if (currentHealth <= 0)
         {
             Die();
         }
     }
+
+    // Method to handle the slime's death
     public void Die()
     {
         Debug.Log("SlimeDied");
+        gameObject.SetActive(false); // Deactivate the slime object
     }
 
+    // Method called when a collision with another collider occurs
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Trap") && canTakeDamage) {
+        if (collision.collider.CompareTag("Trap") && canTakeDamage)
+        {
             TakeDamage(10);
             damageCount++;
-            Debug.Log($"NoOfTimes{damageCount}");
-            Debug.Log("DamageTakenFromTrap");
+            Debug.Log($"Damage taken from trap. Number of times damaged: {damageCount}");
             StartCoroutine(DamageCooldown());
-
         }
     }
+
+    // Coroutine to handle the damage cooldown
     private IEnumerator DamageCooldown()
     {
         canTakeDamage = false;
