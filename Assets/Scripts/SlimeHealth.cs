@@ -9,6 +9,7 @@ public class SlimeHealth : MonoBehaviour
     private int damageCount = 0; // Counter for the number of times damage is taken
     private bool canTakeDamage = true; // Flag to control damage cooldown
     public float damageCooldown = 1.0f; // Cooldown time in seconds
+    public Animator slimeanimator;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class SlimeHealth : MonoBehaviour
         currentHealth -= damageAmount;
         currentHealth = Mathf.Max(currentHealth, 0); // Ensure health does not go below zero
         healthBar.setHealth(currentHealth);
+        slimeanimator.SetTrigger("TakingDamage");
 
         if (currentHealth <= 0)
         {

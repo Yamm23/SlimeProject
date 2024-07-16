@@ -3784,6 +3784,7 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 1228343428}
   damageCooldown: 1
+  slimeanimator: {fileID: 191021533}
 --- !u!114 &191021539
 MonoBehaviour:
   m_ObjectHideFlags: 0
