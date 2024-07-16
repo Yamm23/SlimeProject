@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a1836d6b391ab54ab24a0d745b4f630
-      internalID: 499550751
+      spriteID: f5aad434bfa3f6d4d871d22650222ecb
+      internalID: -185518652
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bbd97c1297ebd947bc21c4574d7fb2a
-      internalID: -124739512
+      spriteID: 82bde3c99451a7848bf4f80a628294c6
+      internalID: -1039125417
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 895d454d1a413844e94ba855a98911dc
-      internalID: -1242642555
+      spriteID: e659036540846fd4cb2d59700456656d
+      internalID: 677928862
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb55ffbbdcfa587468d048cedc2d35b9
-      internalID: -746806227
+      spriteID: 5bd129e259a20f44dbaa526a07325fad
+      internalID: -1005638235
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SlieInjured_0: 499550751
-      SlieInjured_1: -124739512
-      SlieInjured_2: -1242642555
-      SlieInjured_3: -746806227
+      SlieInjured_0: -185518652
+      SlieInjured_1: -1039125417
+      SlieInjured_2: 677928862
+      SlieInjured_3: -1005638235
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
