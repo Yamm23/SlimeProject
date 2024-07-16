@@ -6,7 +6,6 @@ public class SlimeHealth : MonoBehaviour
     public int maxHealth = 100; // Maximum health of the slime
     private int currentHealth;  // Current health of the slime
     public HealthBar healthBar; // Reference to the health bar UI element
-
     private int damageCount = 0; // Counter for the number of times damage is taken
     private bool canTakeDamage = true; // Flag to control damage cooldown
     public float damageCooldown = 1.0f; // Cooldown time in seconds
