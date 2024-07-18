@@ -10,7 +10,7 @@ public class SlimeMovement : MonoBehaviour
     private int jumpCount = 0;
     private bool isGrounded = true;
     public Animator slimeanimator;
-    private bool facingRight = true; // Track the current direction the slime is facing
+    private bool facingRight = true;
 
     public void Awake()
     {
