@@ -7,6 +7,7 @@ public class SlimeHealth : MonoBehaviour
     public int maxHealth = 100; 
     private int currentHealth;  
     public int maxHearts = 3;
+    public int currentHearts = 3;
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
@@ -20,6 +21,7 @@ public class SlimeHealth : MonoBehaviour
     {
         // Initialize current health to max health at the start
         currentHealth = maxHealth;
+        maxHearts = currentHearts;
         healthBar.SetMaxHealth(maxHealth);
     }
 
@@ -44,7 +46,11 @@ public class SlimeHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            currentHearts--;
+            if(currentHearts < 0)
+            {
+                Die();
+            }
         }
     }
 
@@ -53,6 +59,8 @@ public class SlimeHealth : MonoBehaviour
     {
         Debug.Log("SlimeDied");
         gameObject.SetActive(false); // Deactivate the slime object
+
+
     }
 
     // Method called when a collision with another collider occurs
