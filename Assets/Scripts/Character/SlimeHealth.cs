@@ -1,14 +1,19 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlimeHealth : MonoBehaviour
 {
-    public int maxHealth = 100; // Maximum health of the slime
-    private int currentHealth;  // Current health of the slime
-    public HealthBar healthBar; // Reference to the health bar UI element
-    private int damageCount = 0; // Counter for the number of times damage is taken
-    private bool canTakeDamage = true; // Flag to control damage cooldown
-    public float damageCooldown = 1.0f; // Cooldown time in seconds
+    public int maxHealth = 100; 
+    private int currentHealth;  
+    public int maxHearts = 3;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+    public HealthBar healthBar; 
+    private int damageCount = 0; 
+    private bool canTakeDamage = true; 
+    public float damageCooldown = 1.0f; 
     public Animator slimeanimator;
 
     void Start()
@@ -18,6 +23,17 @@ public class SlimeHealth : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
     }
 
+    public void Update()
+    {
+        foreach (Image img in hearts)
+        {
+            img.sprite = emptyHeart;
+        }
+        for (int i = 0; i< maxHealth; i++)
+        {
+            hearts[i].sprite = fullHeart;
+        }
+    }
     // Method to apply damage to the slime
     public void TakeDamage(int damageAmount)
     {
