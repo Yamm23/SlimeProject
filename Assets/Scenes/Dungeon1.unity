@@ -3783,6 +3783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   maxHearts: 3
+  currentHearts: 3
   hearts:
   - {fileID: 1871038384}
   - {fileID: 782295688}
@@ -3791,7 +3792,7 @@ MonoBehaviour:
   emptyHeart: {fileID: 21300000, guid: c92f91b011616854b8087452233f897b, type: 3}
   healthBar: {fileID: 1228343428}
   damageCooldown: 1
-  slimeanimator: {fileID: 191021533}
+  slimeAnimator: {fileID: 191021533}
 --- !u!114 &191021539
 MonoBehaviour:
   m_ObjectHideFlags: 0

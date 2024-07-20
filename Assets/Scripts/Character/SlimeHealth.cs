@@ -64,7 +64,7 @@ public class SlimeHealth : MonoBehaviour
             }
             else
             {
-                RestartLevel();
+                //RestartLevel();
             }
         }
     }
