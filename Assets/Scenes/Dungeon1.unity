@@ -3649,7 +3649,7 @@ GameObject:
   - component: {fileID: 191021541}
   m_Layer: 0
   m_Name: Slime Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53315,7 +53315,10 @@ MonoBehaviour:
   pointA: {fileID: 1908134943}
   pointB: {fileID: 1808064664}
   skeletonRigidbody: {fileID: 1340314203}
+  enemyAnim: {fileID: 0}
   speed: 2
+  detectionRange: 5
+  attackRange: 1
 --- !u!50 &1340314203
 Rigidbody2D:
   serializedVersion: 4

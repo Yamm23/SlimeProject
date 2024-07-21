@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyPatrolScript : MonoBehaviour
@@ -10,6 +9,11 @@ public class EnemyPatrolScript : MonoBehaviour
     private Animator skeletonAnim;
     private Transform currentPoint;
     public float speed;
+    public float detectionRange = 5f;
+    public float attackRange = 1f;
+    private Transform player;
+    private bool isPlayerInRange = false;
+    private bool isAttacking = false;
     private bool facingRight = false; // Flag to track the direction the skeleton is facing
 
     // Start is called before the first frame update
@@ -18,6 +22,7 @@ public class EnemyPatrolScript : MonoBehaviour
         skeletonRigidbody = GetComponent<Rigidbody2D>();
         currentPoint = pointB.transform;
         skeletonAnim = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -25,6 +30,26 @@ public class EnemyPatrolScript : MonoBehaviour
     {
         HandleAnimation();
 
+        if (!isPlayerInRange && !isAttacking)
+        {
+            Patrol();
+        }
+
+        DetectPlayer();
+
+        if (isPlayerInRange && !isAttacking)
+        {
+            FollowPlayer();
+        }
+
+        if (isPlayerInRange && Vector2.Distance(transform.position, player.position) <= attackRange)
+        {
+            StartCoroutine(AttackPlayer());
+        }
+    }
+
+    void Patrol()
+    {
         Vector2 point = currentPoint.position - transform.position;
 
         if (currentPoint == pointB.transform)
@@ -57,6 +82,42 @@ public class EnemyPatrolScript : MonoBehaviour
         }
     }
 
+    void DetectPlayer()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        if (distanceToPlayer <= detectionRange)
+        {
+            isPlayerInRange = true;
+        }
+        else
+        {
+            isPlayerInRange = false;
+        }
+    }
+
+    void FollowPlayer()
+    {
+        Vector2 direction = (player.position - transform.position).normalized;
+        skeletonRigidbody.velocity = new Vector2(direction.x * speed, skeletonRigidbody.velocity.y);
+
+        if (direction.x > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (direction.x < 0 && facingRight)
+        {
+            Flip();
+        }
+    }
+
+    private IEnumerator AttackPlayer()
+    {
+        isAttacking = true;
+        skeletonAnim.SetTrigger("Attack");
+        yield return new WaitForSeconds(1f); // Attack animation duration
+        isAttacking = false;
+    }
+
     // Method to flip the skeleton's sprite
     void Flip()
     {
@@ -66,6 +127,7 @@ public class EnemyPatrolScript : MonoBehaviour
         theScale.x *= -1; // Flip the x scale of the skeleton
         transform.localScale = theScale;
     }
+
     private void HandleAnimation()
     {
         if (Mathf.Abs(skeletonRigidbody.velocity.x) > 0.1f)
