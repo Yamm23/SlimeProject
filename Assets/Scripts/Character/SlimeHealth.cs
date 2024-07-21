@@ -26,11 +26,6 @@ public class SlimeHealth : MonoBehaviour
         UpdateHearts();
     }
 
-    void Update()
-    {
-        UpdateHearts();
-    }
-
     void UpdateHearts()
     {
         // Update the heart UI based on currentHearts
@@ -66,12 +61,14 @@ public class SlimeHealth : MonoBehaviour
             {
                 //RestartLevel();
             }
+            UpdateHearts();
         }
     }
 
     // Method to handle the slime's death
     public void Die()
     {
+        UpdateHearts();
         Debug.Log("SlimeDied");
         gameObject.SetActive(false); // Deactivate the slime object
         // You may want to add additional logic here, such as displaying a game over screen
