@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPatrol : MonoBehaviour
+public class EnemyPatrol
 {
     private Transform pointA;
     private Transform pointB;
     private Rigidbody2D skeletonRigidbody;
+    private Transform enemyTransform;
     private Transform currentPoint;
     public float speed;
+    private bool facingRight = false;
 
     public void SetPatrolPoints(Transform pointA, Transform pointB)
     {
@@ -22,11 +22,16 @@ public class EnemyPatrol : MonoBehaviour
         skeletonRigidbody = rb;
     }
 
-    void Update()
+    public void SetTransform(Transform transform)
     {
-        if (currentPoint == null || skeletonRigidbody == null) return;
+        enemyTransform = transform;
+    }
 
-        Vector2 point = currentPoint.position - transform.position;
+    public void Patrol()
+    {
+        if (currentPoint == null || skeletonRigidbody == null || enemyTransform == null) return;
+
+        Vector2 direction = currentPoint.position - skeletonRigidbody.transform.position;
 
         if (currentPoint == pointB)
         {
@@ -37,14 +42,27 @@ public class EnemyPatrol : MonoBehaviour
             skeletonRigidbody.velocity = new Vector2(-speed, skeletonRigidbody.velocity.y);
         }
 
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f)
+        if (Vector2.Distance(skeletonRigidbody.transform.position, currentPoint.position) < 0.5f)
         {
             currentPoint = (currentPoint == pointB) ? pointA : pointB;
         }
+
+        if (skeletonRigidbody.velocity.x > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (skeletonRigidbody.velocity.x < 0 && facingRight)
+        {
+            Flip();
+        }
     }
 
-    public void Patrol()
+    private void Flip()
     {
-        // Your existing patrol logic here
+        facingRight = !facingRight;
+
+        Vector3 theScale = enemyTransform.localScale;
+        theScale.x *= -1;
+        enemyTransform.localScale = theScale;
     }
 }

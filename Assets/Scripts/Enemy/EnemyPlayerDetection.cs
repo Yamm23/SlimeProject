@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPlayerDetection : MonoBehaviour
+public class EnemyPlayerDetection
 {
     public float detectionRange = 5.0f;
     private Transform player;
 
-    private void Start()
+    public void SetPlayer(Transform playerTransform)
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = playerTransform;
     }
 
-    public bool IsPlayerInRange()
+    public bool IsPlayerInRange(Vector2 enemyPosition)
     {
         if (player == null) return false;
-        return Vector2.Distance(transform.position, player.position) <= detectionRange;
+        return Vector2.Distance(enemyPosition, player.position) <= detectionRange;
     }
 }

@@ -4,41 +4,54 @@ using UnityEngine;
 
 public class SkeletonController : MonoBehaviour
 {
-    [SerializeField] GameObject pointA;
-    [SerializeField] GameObject pointB;
+    [SerializeField] private GameObject pointA;
+    [SerializeField] private GameObject pointB;
     public Rigidbody2D skeletonRigidbody;
     private EnemyPatrol skeletonPatrol;
-    private EnemyPlayerDetection skeletonPlayerdetection;
-    private EnemyPlayerFollow skeletonPlayerfollow;
+    private EnemyPlayerDetection skeletonPlayerDetection;
+    private EnemyPlayerFollow skeletonPlayerFollow;
     private EnemyAttack skeletonAttack;
-    // Start is called before the first frame update
+
+    [SerializeField] private Transform playerTransform; // Assign player transform from the Inspector
 
     private void Awake()
     {
-        skeletonRigidbody = GetComponent<Rigidbody2D>();
-        skeletonPatrol = GetComponent<EnemyPatrol>();
-        skeletonPlayerdetection = GetComponent<EnemyPlayerDetection>();
-        skeletonPlayerfollow = GetComponent<EnemyPlayerFollow>();
-        skeletonAttack = GetComponent<EnemyAttack>();
-      
+        // Initialize the behavior scripts
+        skeletonPatrol = new EnemyPatrol();
+        skeletonPlayerDetection = new EnemyPlayerDetection();
+        skeletonPlayerFollow = new EnemyPlayerFollow();
+        skeletonAttack = new EnemyAttack();
 
+        // Initialize rigidbody
+        skeletonRigidbody = GetComponent<Rigidbody2D>();
     }
-    public void Start()
+
+    private void Start()
     {
         if (pointA == null || pointB == null)
         {
-            Debug.Log("PointNotSet");
+            Debug.LogError("Point A or Point B not set");
+            return;
         }
+
+        // Set patrol points and rigidbody for patrol behavior
         skeletonPatrol.SetPatrolPoints(pointA.transform, pointB.transform);
         skeletonPatrol.SetRigidbody(skeletonRigidbody);
+        skeletonPatrol.SetTransform(transform);
+        skeletonPatrol.speed = 2.0f; // Set patrol speed as needed
+
+        // Set player for detection, follow, and attack
+        skeletonPlayerDetection.SetPlayer(playerTransform);
+        skeletonPlayerFollow.SetPlayer(playerTransform);
+        skeletonAttack.SetPlayer(playerTransform);
     }
 
-    void Update()
+    private void Update()
     {
-        if (skeletonPlayerdetection.IsPlayerInRange())
+        if (skeletonPlayerDetection.IsPlayerInRange(skeletonRigidbody.transform.position))
         {
-            skeletonPlayerfollow.FollowPlayer();
-            skeletonAttack.AttackPlayer();
+            skeletonPlayerFollow.FollowPlayer(skeletonRigidbody.transform);
+            skeletonAttack.AttackPlayer(skeletonRigidbody.transform);
         }
         else
         {
