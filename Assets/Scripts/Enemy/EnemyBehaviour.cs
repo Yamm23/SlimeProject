@@ -56,7 +56,6 @@ public class EnemyBehavior
 
         if (isPlayerInRange && Vector2.Distance(enemyTransform.position, player.position) <= attackRange)
         {
-            Debug.Log("WithinAttackRange");
             if (!isAttacking) controller.StartAttackCoroutine(AttackPlayer());
             
         }
