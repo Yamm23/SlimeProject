@@ -53085,10 +53085,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1198098762}
-  - component: {fileID: 1198098766}
-  - component: {fileID: 1198098765}
-  - component: {fileID: 1198098764}
-  - component: {fileID: 1198098763}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -53112,55 +53108,6 @@ Transform:
   - {fileID: 1340314201}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1198098763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198098761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e898fc4c3d231c4bbe62e8a218f19ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1198098764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198098761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc7ed56fd7e6fc4ea06f819434d1bcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1198098765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198098761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4310e21ea878043a4d706e45c4d43d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1198098766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198098761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aaae78136d37a04e9113f17014e06fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!1 &1228343425
 GameObject:
   m_ObjectHideFlags: 0
@@ -53451,10 +53398,6 @@ MonoBehaviour:
   pointA: {fileID: 1908134943}
   pointB: {fileID: 1808064664}
   skeletonRigidbody: {fileID: 1340314203}
-  skeletonPatrol: {fileID: 1198098766}
-  skeletonPlayerdetection: {fileID: 1198098764}
-  skeletonPlayerfollow: {fileID: 1198098763}
-  skeletonAttack: {fileID: 1198098765}
 --- !u!1 &1385751168
 GameObject:
   m_ObjectHideFlags: 0
@@ -54046,9 +53989,9 @@ SceneRoots:
   m_Roots:
   - {fileID: 191584360}
   - {fileID: 1505164368}
+  - {fileID: 998151221}
   - {fileID: 1938571482}
   - {fileID: 191021530}
   - {fileID: 1439594877}
   - {fileID: 1198098762}
   - {fileID: 780228661}
-  - {fileID: 998151221}
