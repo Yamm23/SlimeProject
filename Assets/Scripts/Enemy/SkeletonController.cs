@@ -8,10 +8,11 @@ public class SkeletonController : MonoBehaviour
     public Rigidbody2D skeletonRigidbody;
     public float speed = 3f; // Default speed
     public float detectionRange = 5f; // Default detection range
-    public float attackRange = 1f; // Default attack range
+    public float attackRange = 2f; // Default attack range
     private Animator skeletonAnimator;
     private EnemyBehavior enemyBehavior;
     private Transform player;
+
 
     private void Start()
     {

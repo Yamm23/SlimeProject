@@ -56,7 +56,9 @@ public class EnemyBehavior
 
         if (isPlayerInRange && Vector2.Distance(enemyTransform.position, player.position) <= attackRange)
         {
+            Debug.Log("WithinAttackRange");
             if (!isAttacking) controller.StartAttackCoroutine(AttackPlayer());
+            
         }
     }
 
@@ -111,8 +113,9 @@ public class EnemyBehavior
 
     private IEnumerator AttackPlayer()
     {
+        Debug.Log("Attack!!!");
         isAttacking = true;
-        enemyAnim.SetTrigger("Attack");
+        //enemyAnim.SetTrigger("Attack");
         yield return new WaitForSeconds(1f); // Adjust as necessary for your attack animation
         isAttacking = false;
     }

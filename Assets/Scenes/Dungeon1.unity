@@ -53401,6 +53401,7 @@ MonoBehaviour:
   speed: 2
   detectionRange: 5
   attackRange: 1
+  skeletonTransform: {fileID: 1340314201}
 --- !u!1 &1385751168
 GameObject:
   m_ObjectHideFlags: 0
