@@ -53222,10 +53222,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1340314201}
   - component: {fileID: 1340314200}
-  - component: {fileID: 1340314202}
   - component: {fileID: 1340314203}
   - component: {fileID: 1340314204}
   - component: {fileID: 1340314205}
+  - component: {fileID: 1340314206}
   m_Layer: 0
   m_Name: SkeletonEnemy
   m_TagString: Untagged
@@ -53300,25 +53300,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1198098762}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1340314202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340314199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37ec2e58dded05945945ee737da047c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointA: {fileID: 1908134943}
-  pointB: {fileID: 1808064664}
-  skeletonRigidbody: {fileID: 1340314203}
-  enemyAnim: {fileID: 0}
-  speed: 2
-  detectionRange: 5
-  attackRange: 1
 --- !u!50 &1340314203
 Rigidbody2D:
   serializedVersion: 4
@@ -53402,6 +53383,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1340314206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340314199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e26f4a38d834045944e4fa931b3395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 0}
+  pointB: {fileID: 0}
+  skeletonRigidbody: {fileID: 0}
 --- !u!1 &1385751168
 GameObject:
   m_ObjectHideFlags: 0
