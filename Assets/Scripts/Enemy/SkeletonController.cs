@@ -1,61 +1,48 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SkeletonController : MonoBehaviour
 {
-    [SerializeField] private GameObject pointA;
-    [SerializeField] private GameObject pointB;
+    [SerializeField] GameObject pointA;
+    [SerializeField] GameObject pointB;
     public Rigidbody2D skeletonRigidbody;
-    private EnemyPatrol skeletonPatrol;
-    private EnemyPlayerDetection skeletonPlayerDetection;
-    private EnemyPlayerFollow skeletonPlayerFollow;
-    private EnemyAttack skeletonAttack;
-
-    [SerializeField] private Transform playerTransform; // Assign player transform from the Inspector
-
-    private void Awake()
-    {
-        // Initialize the behavior scripts
-        skeletonPatrol = new EnemyPatrol();
-        skeletonPlayerDetection = new EnemyPlayerDetection();
-        skeletonPlayerFollow = new EnemyPlayerFollow();
-        skeletonAttack = new EnemyAttack();
-
-        // Initialize rigidbody
-        skeletonRigidbody = GetComponent<Rigidbody2D>();
-    }
+    private Animator skeletonAnim;
+    private EnemyBehavior enemyBehavior;
+    private Transform player;
 
     private void Start()
     {
-        if (pointA == null || pointB == null)
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        skeletonAnim = GetComponent<Animator>();
+
+        if (pointA == null || pointB == null || skeletonRigidbody == null || player == null)
         {
-            Debug.LogError("Point A or Point B not set");
+            Debug.LogError("Required components are not assigned.");
             return;
         }
 
-        // Set patrol points and rigidbody for patrol behavior
-        skeletonPatrol.SetPatrolPoints(pointA.transform, pointB.transform);
-        skeletonPatrol.SetRigidbody(skeletonRigidbody);
-        skeletonPatrol.SetTransform(transform);
-        skeletonPatrol.speed = 2.0f; // Set patrol speed as needed
-
-        // Set player for detection, follow, and attack
-        skeletonPlayerDetection.SetPlayer(playerTransform);
-        skeletonPlayerFollow.SetPlayer(playerTransform);
-        skeletonAttack.SetPlayer(playerTransform);
+        // Create an instance of EnemyBehavior with the required parameters
+        enemyBehavior = new EnemyBehavior(
+            pointA.transform,
+            pointB.transform,
+            player,
+            skeletonRigidbody,
+            transform,
+            skeletonAnim,
+            this // Pass the current instance of SkeletonController
+        );
     }
 
     private void Update()
     {
-        if (skeletonPlayerDetection.IsPlayerInRange(skeletonRigidbody.transform.position))
+        if (enemyBehavior != null)
         {
-            skeletonPlayerFollow.FollowPlayer(skeletonRigidbody.transform);
-            skeletonAttack.AttackPlayer(skeletonRigidbody.transform);
+            enemyBehavior.Update();
         }
-        else
-        {
-            skeletonPatrol.Patrol();
-        }
+    }
+
+    public void StartAttackCoroutine(IEnumerator coroutine)
+    {
+        StartCoroutine(coroutine);
     }
 }
