@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class EnemyPlayerDetection : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float detectionRadius = 5f;
+    private Transform player;
+
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool IsPlayerInRange()
     {
-        
+        return Vector2.Distance(transform.position, player.position) <= detectionRadius;
     }
 }

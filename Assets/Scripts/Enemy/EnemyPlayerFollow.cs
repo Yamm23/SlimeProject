@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class EnemyPlayerFollow : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Transform player;
+    public float followSpeed = 2f;
+
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void FollowPlayer()
     {
-        
+        if (player != null)
+        {
+            Vector2 direction = (player.position - transform.position).normalized;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x * followSpeed, GetComponent<Rigidbody2D>().velocity.y);
+        }
     }
 }
