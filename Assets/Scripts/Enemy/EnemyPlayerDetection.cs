@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class EnemyPlayerDetection : MonoBehaviour
 {
-    public float detectionRadius = 5f;
+    public float detectionRange = 5.0f;
     private Transform player;
 
-    void Start()
+    private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public bool IsPlayerInRange()
     {
-        return Vector2.Distance(transform.position, player.position) <= detectionRadius;
+        if (player == null) return false;
+        return Vector2.Distance(transform.position, player.position) <= detectionRange;
     }
 }

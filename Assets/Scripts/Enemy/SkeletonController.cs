@@ -7,10 +7,10 @@ public class SkeletonController : MonoBehaviour
     [SerializeField] GameObject pointA;
     [SerializeField] GameObject pointB;
     public Rigidbody2D skeletonRigidbody;
-    public EnemyPatrol skeletonPatrol;
-    public EnemyPlayerDetection skeletonPlayerdetection;
-    public EnemyPlayerFollow skeletonPlayerfollow;
-    public EnemyAttack skeletonAttack;
+    private EnemyPatrol skeletonPatrol;
+    private EnemyPlayerDetection skeletonPlayerdetection;
+    private EnemyPlayerFollow skeletonPlayerfollow;
+    private EnemyAttack skeletonAttack;
     // Start is called before the first frame update
 
     private void Awake()
@@ -20,9 +20,18 @@ public class SkeletonController : MonoBehaviour
         skeletonPlayerdetection = GetComponent<EnemyPlayerDetection>();
         skeletonPlayerfollow = GetComponent<EnemyPlayerFollow>();
         skeletonAttack = GetComponent<EnemyAttack>();
-        
-    }
+      
 
+    }
+    public void Start()
+    {
+        if (pointA == null || pointB == null)
+        {
+            Debug.Log("PointNotSet");
+        }
+        skeletonPatrol.SetPatrolPoints(pointA.transform, pointB.transform);
+        skeletonPatrol.SetRigidbody(skeletonRigidbody);
+    }
 
     void Update()
     {

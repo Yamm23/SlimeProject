@@ -6,19 +6,9 @@ public class EnemyPatrol : MonoBehaviour
 {
     private Transform pointA;
     private Transform pointB;
-    private Transform currentPoint;
     private Rigidbody2D skeletonRigidbody;
+    private Transform currentPoint;
     public float speed;
-
-    void Start()
-    {
-        currentPoint = pointB; // Ensure currentPoint is initialized
-    }
-
-    void Update()
-    {
-        Patrol();
-    }
 
     public void SetPatrolPoints(Transform pointA, Transform pointB)
     {
@@ -27,14 +17,14 @@ public class EnemyPatrol : MonoBehaviour
         currentPoint = pointB;
     }
 
-    public void SetRigidbody(Rigidbody2D rigidbody)
+    public void SetRigidbody(Rigidbody2D rb)
     {
-        skeletonRigidbody = rigidbody;
+        skeletonRigidbody = rb;
     }
 
-    public void Patrol()
+    void Update()
     {
-        if (skeletonRigidbody == null) return; // Ensure the Rigidbody is assigned
+        if (currentPoint == null || skeletonRigidbody == null) return;
 
         Vector2 point = currentPoint.position - transform.position;
 
@@ -51,5 +41,10 @@ public class EnemyPatrol : MonoBehaviour
         {
             currentPoint = (currentPoint == pointB) ? pointA : pointB;
         }
+    }
+
+    public void Patrol()
+    {
+        // Your existing patrol logic here
     }
 }
