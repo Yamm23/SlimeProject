@@ -9,14 +9,14 @@ public class SkeletonController : MonoBehaviour
     public float speed = 3f; // Default speed
     public float detectionRange = 5f; // Default detection range
     public float attackRange = 1f; // Default attack range
-    private Animator skeletonAnim;
+    private Animator skeletonAnimator;
     private EnemyBehavior enemyBehavior;
     private Transform player;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        skeletonAnim = GetComponent<Animator>();
+        skeletonAnimator = GetComponent<Animator>();
 
         if (pointA == null || pointB == null || skeletonRigidbody == null || player == null)
         {
@@ -31,7 +31,7 @@ public class SkeletonController : MonoBehaviour
             player,
             skeletonRigidbody,
             transform,
-            skeletonAnim,
+            skeletonAnimator,
             this // Pass the current instance of SkeletonController
         );
 

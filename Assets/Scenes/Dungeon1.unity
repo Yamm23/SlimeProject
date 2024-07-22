@@ -53271,9 +53271,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 648514017
+  m_SortingLayer: 4
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 1563f93be2ae312428447cd45d762e00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -53398,6 +53398,9 @@ MonoBehaviour:
   pointA: {fileID: 1908134943}
   pointB: {fileID: 1808064664}
   skeletonRigidbody: {fileID: 1340314203}
+  speed: 2
+  detectionRange: 5
+  attackRange: 1
 --- !u!1 &1385751168
 GameObject:
   m_ObjectHideFlags: 0
