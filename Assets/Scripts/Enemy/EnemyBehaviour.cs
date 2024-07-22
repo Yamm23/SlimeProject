@@ -10,13 +10,12 @@ public class EnemyBehavior
     private Transform enemyTransform;
     private Animator enemyAnim;
     private Transform currentPoint;
-    public float speed=5f;
-    public float detectionRange = 5f;
-    public float attackRange = 1f;
+    private float speed;
+    private float detectionRange;
+    private float attackRange;
     private bool isPlayerInRange = false;
     private bool isAttacking = false;
     private bool facingRight = false;
-
     private SkeletonController controller;
 
     // Constructor to initialize all required fields
@@ -30,6 +29,13 @@ public class EnemyBehavior
         this.enemyAnim = anim;
         this.controller = controller;
         currentPoint = pointB;
+    }
+
+    public void SetParameters(float speed, float detectionRange, float attackRange)
+    {
+        this.speed = speed;
+        this.detectionRange = detectionRange;
+        this.attackRange = attackRange;
     }
 
     public void Update()

@@ -6,6 +6,9 @@ public class SkeletonController : MonoBehaviour
     [SerializeField] GameObject pointA;
     [SerializeField] GameObject pointB;
     public Rigidbody2D skeletonRigidbody;
+    public float speed = 3f; // Default speed
+    public float detectionRange = 5f; // Default detection range
+    public float attackRange = 1f; // Default attack range
     private Animator skeletonAnim;
     private EnemyBehavior enemyBehavior;
     private Transform player;
@@ -31,6 +34,9 @@ public class SkeletonController : MonoBehaviour
             skeletonAnim,
             this // Pass the current instance of SkeletonController
         );
+
+        // Set parameters for EnemyBehavior
+        enemyBehavior.SetParameters(speed, detectionRange, attackRange);
     }
 
     private void Update()
