@@ -6,7 +6,7 @@ public class EnemyBehavior
 {
     private Transform pointA;
     private Transform pointB;
-    private Transform player;
+    private Transform playerTransform;
     private Rigidbody2D enemyRigidbody;
     private Transform enemyTransform;
     private Animator enemyAnim;
@@ -25,7 +25,7 @@ public class EnemyBehavior
     {
         this.pointA = pointA;
         this.pointB = pointB;
-        this.player = player;
+        this.playerTransform = player;
         this.enemyRigidbody = rb;
         this.enemyTransform = enemyTransform;
         this.enemyAnim = anim;
@@ -57,9 +57,12 @@ public class EnemyBehavior
             FollowPlayer();
         }
 
-        if (isPlayerInRange && Vector2.Distance(enemyTransform.position, player.position) <= attackRange)
+        if (isPlayerInRange && Vector2.Distance(enemyTransform.position, playerTransform.position) <= attackRange)
         {
-            if (!isAttacking) controller.StartAttackCoroutine(AttackPlayer());
+            if (!isAttacking)
+            {
+                controller.StartAttackCoroutine(AttackPlayer());
+            }
         }
     }
 
@@ -93,14 +96,19 @@ public class EnemyBehavior
 
     private void DetectPlayer()
     {
-        float distanceToPlayer = Vector2.Distance(enemyTransform.position, player.position);
+        float distanceToPlayer = Vector2.Distance(enemyTransform.position, playerTransform.position);
         isPlayerInRange = distanceToPlayer <= detectionRange;
     }
 
     private void FollowPlayer()
     {
-        Vector2 direction = (player.position - enemyTransform.position).normalized;
+        Vector2 direction = (playerTransform.position - enemyTransform.position).normalized;
         enemyRigidbody.velocity = new Vector2(direction.x * speed, enemyRigidbody.velocity.y);
+        if(Vector2.Distance(enemyTransform.position, pointA.position)<0.1f||(Vector2.Distance(enemyTransform.position, pointB.position) < 0.1f))
+        {
+            Patrol();
+        }
+
 
         if (direction.x > 0 && !facingRight)
         {
@@ -117,14 +125,12 @@ public class EnemyBehavior
         Debug.Log("Attacking the player!");
         isAttacking = true;
         enemyAnim.SetBool("isAttacking", true);
-
-        yield return new WaitForSeconds(1f); // Adjust as necessary for your attack animation
-
         // Apply damage to the player
-        if (Vector2.Distance(enemyTransform.position, player.position) <= attackRange)
+        if (Vector2.Distance(enemyTransform.position, playerTransform.position) <= attackRange)
         {
             playerHealth.TakeDamage(20); // Adjust damage value as needed
         }
+        yield return new WaitForSeconds(1f); // Adjust as necessary for your attack animation
         isAttacking = false;
         enemyAnim.SetBool("isAttacking", false);
     }

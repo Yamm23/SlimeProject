@@ -13,16 +13,16 @@ public class SkeletonController : MonoBehaviour
     public float attackRange = 2f; // Default attack range
     private Animator skeletonAnimator;
     private EnemyBehavior enemyBehavior;
-    private Transform player;
+    private Transform playerTransforms;
 
 
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransforms = GameObject.FindGameObjectWithTag("Player").transform;
         skeletonAnimator = GetComponent<Animator>();
 
-        if (pointA == null || pointB == null || skeletonRigidbody == null || player == null)
+        if (pointA == null || pointB == null || skeletonRigidbody == null || playerTransforms == null)
         {
             Debug.LogError("Required components are not assigned.");
             return;
@@ -32,7 +32,7 @@ public class SkeletonController : MonoBehaviour
         enemyBehavior = new EnemyBehavior(
             pointA.transform,
             pointB.transform,
-            player,
+            playerTransforms,
             skeletonRigidbody,
             transform,
             skeletonAnimator,
