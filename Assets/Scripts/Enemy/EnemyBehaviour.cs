@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBehavior
@@ -17,6 +18,7 @@ public class EnemyBehavior
     private bool isAttacking = false;
     private bool facingRight = false;
     private SkeletonController controller;
+    private SlimeHealth playerHealth;
 
     // Constructor to initialize all required fields
     public EnemyBehavior(Transform pointA, Transform pointB, Transform player, Rigidbody2D rb, Transform enemyTransform, Animator anim, SkeletonController controller)
@@ -28,6 +30,7 @@ public class EnemyBehavior
         this.enemyTransform = enemyTransform;
         this.enemyAnim = anim;
         this.controller = controller;
+        this.playerHealth = player.GetComponent<SlimeHealth>();
         currentPoint = pointB;
     }
 
@@ -57,7 +60,6 @@ public class EnemyBehavior
         if (isPlayerInRange && Vector2.Distance(enemyTransform.position, player.position) <= attackRange)
         {
             if (!isAttacking) controller.StartAttackCoroutine(AttackPlayer());
-            
         }
     }
 
@@ -112,11 +114,19 @@ public class EnemyBehavior
 
     private IEnumerator AttackPlayer()
     {
-        Debug.Log("Attack!!!");
+        Debug.Log("Attacking the player!");
         isAttacking = true;
-        //enemyAnim.SetTrigger("Attack");
+        enemyAnim.SetBool("isAttacking", true);
+
         yield return new WaitForSeconds(1f); // Adjust as necessary for your attack animation
+
+        // Apply damage to the player
+        if (Vector2.Distance(enemyTransform.position, player.position) <= attackRange)
+        {
+            playerHealth.TakeDamage(10); // Adjust damage value as needed
+        }
         isAttacking = false;
+        enemyAnim.SetBool("isAttacking", false);
     }
 
     private void Flip()

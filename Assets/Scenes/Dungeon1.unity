@@ -53397,6 +53397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1908134943}
   pointB: {fileID: 1808064664}
+  slimeCharacter: {fileID: 191021527}
   skeletonRigidbody: {fileID: 1340314203}
   speed: 3
   detectionRange: 5

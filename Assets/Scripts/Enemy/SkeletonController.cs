@@ -1,10 +1,12 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SkeletonController : MonoBehaviour
 {
     [SerializeField] GameObject pointA;
     [SerializeField] GameObject pointB;
+    [SerializeField] GameObject slimeCharacter;
     public Rigidbody2D skeletonRigidbody;
     public float speed = 3f; // Default speed
     public float detectionRange = 5f; // Default detection range
@@ -12,6 +14,7 @@ public class SkeletonController : MonoBehaviour
     private Animator skeletonAnimator;
     private EnemyBehavior enemyBehavior;
     private Transform player;
+
 
 
     private void Start()
