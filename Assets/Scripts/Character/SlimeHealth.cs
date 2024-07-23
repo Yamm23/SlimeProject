@@ -20,7 +20,6 @@ public class SlimeHealth : MonoBehaviour
 
     void Start()
     {
-        // Initialize current health to max health at the start
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         UpdateHearts();
@@ -28,7 +27,6 @@ public class SlimeHealth : MonoBehaviour
 
     void UpdateHearts()
     {
-        // Update the heart UI based on currentHearts
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < currentHearts)
@@ -42,9 +40,10 @@ public class SlimeHealth : MonoBehaviour
         }
     }
 
-    // Method to apply damage to the slime
     public void TakeDamage(int damageAmount)
     {
+        if (!canTakeDamage) return;
+
         currentHealth -= damageAmount;
         currentHealth = Mathf.Max(currentHealth, 0); // Ensure health does not go below zero
         healthBar.setHealth(currentHealth);
@@ -53,38 +52,36 @@ public class SlimeHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHearts--;
+            UpdateHearts();
+
             if (currentHearts <= 0)
             {
                 Die();
             }
             else
             {
-                //RestartLevel();
+                currentHealth = maxHealth;
+                healthBar.setHealth(currentHealth);
             }
-            UpdateHearts();
         }
     }
 
-    // Method to handle the slime's death
     public void Die()
     {
         UpdateHearts();
         Debug.Log("SlimeDied");
         gameObject.SetActive(false); // Deactivate the slime object
-        // You may want to add additional logic here, such as displaying a game over screen
+        // Additional game over logic can go here
     }
 
-    // Method to restart the current level
     void RestartLevel()
     {
         Debug.Log("Restarting Level");
         currentHealth = maxHealth;
         healthBar.setHealth(currentHealth);
-        // Reload the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    // Method called when a collision with another collider occurs
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Trap") && canTakeDamage)
@@ -96,7 +93,6 @@ public class SlimeHealth : MonoBehaviour
         }
     }
 
-    // Coroutine to handle the damage cooldown
     private IEnumerator DamageCooldown()
     {
         canTakeDamage = false;

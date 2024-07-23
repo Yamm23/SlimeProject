@@ -123,7 +123,7 @@ public class EnemyBehavior
         // Apply damage to the player
         if (Vector2.Distance(enemyTransform.position, player.position) <= attackRange)
         {
-            playerHealth.TakeDamage(10); // Adjust damage value as needed
+            playerHealth.TakeDamage(20); // Adjust damage value as needed
         }
         isAttacking = false;
         enemyAnim.SetBool("isAttacking", false);
