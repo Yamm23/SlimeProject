@@ -17,6 +17,7 @@ public class SlimeHealth : MonoBehaviour
     private bool canTakeDamage = true;
     public float damageCooldown = 1.0f;
     public Animator slimeAnimator;
+    public float takeDamageDuration = 0.5f;
 
     void Start()
     {
@@ -42,12 +43,15 @@ public class SlimeHealth : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        if (!canTakeDamage) return;
-
+        if (!canTakeDamage)
+        {
+            return;
+        }
         currentHealth -= damageAmount;
         currentHealth = Mathf.Max(currentHealth, 0); // Ensure health does not go below zero
         healthBar.setHealth(currentHealth);
-        slimeAnimator.SetTrigger("TakingDamage");
+        slimeAnimator.SetBool("isTakingDamage", true);
+        StartCoroutine(InjuredAnimationCoolDown());
 
         if (currentHealth <= 0)
         {
@@ -64,6 +68,13 @@ public class SlimeHealth : MonoBehaviour
                 healthBar.setHealth(currentHealth);
             }
         }
+    }
+    private IEnumerator InjuredAnimationCoolDown()
+    {
+        Debug.Log("Entered the AnimCoroutine");
+        yield return new WaitForSeconds(takeDamageDuration);
+        slimeAnimator.SetBool("isTakingDamage", false);
+        Debug.Log("Exited the AnimCoroutine");
     }
 
     public void Die()
