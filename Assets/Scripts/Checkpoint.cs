@@ -7,6 +7,7 @@ public class Checkpoint : MonoBehaviour
 {
     private RespawnBoundary respawn;
     private BoxCollider2D checkpointCollider;
+    public Animator checkpointAnimation;
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,6 +24,7 @@ public class Checkpoint : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            checkpointAnimation.SetTrigger("isActive");
             respawn.respawnPoint = this.gameObject;
             checkpointCollider.enabled = false;
         }
