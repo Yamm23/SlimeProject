@@ -11,7 +11,6 @@ public class SlimeMovement : MonoBehaviour
     private bool isGrounded = true;
     public Animator slimeanimator;
     private bool facingRight = true;
-
     public void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
