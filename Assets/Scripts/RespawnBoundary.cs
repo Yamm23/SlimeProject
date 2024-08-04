@@ -6,9 +6,12 @@ public class RespawnBoundary : MonoBehaviour
 {
     public GameObject player;
     public GameObject respawnPoint;
+    private SlimeHealth respawnslimeHealth;
+    private int currentHealth;
     // Start is called before the first frame update
     void Start()
     {
+        respawnslimeHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<SlimeHealth>();
         
     }
 
@@ -21,6 +24,8 @@ public class RespawnBoundary : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            this.currentHealth = respawnslimeHealth.currentHealth;
+            respawnslimeHealth.TakeDamage(this.currentHealth);
             player.transform.position = respawnPoint.transform.position;
         }
     }

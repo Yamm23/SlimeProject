@@ -8,11 +8,14 @@ public class Checkpoint : MonoBehaviour
     private RespawnBoundary respawn;
     private BoxCollider2D checkpointCollider;
     public Animator checkpointAnimation;
+    private SlimeHealth respawnslimeHealth;
+    
     // Start is called before the first frame update
     void Awake()
     {
         checkpointCollider = GetComponent<BoxCollider2D>();
         respawn = GameObject.FindGameObjectWithTag("Respawn").GetComponent<RespawnBoundary>();
+        respawnslimeHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<SlimeHealth>();
     }
 
     // Update is called once per frame
@@ -27,6 +30,7 @@ public class Checkpoint : MonoBehaviour
             checkpointAnimation.SetTrigger("isActive");
             respawn.respawnPoint = this.gameObject;
             checkpointCollider.enabled = false;
+           
         }
     }
 }

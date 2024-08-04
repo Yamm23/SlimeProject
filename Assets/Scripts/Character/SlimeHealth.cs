@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SlimeHealth : MonoBehaviour
 {
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
     public int maxHearts = 3;
     public int currentHearts = 3;
     public Image[] hearts;
