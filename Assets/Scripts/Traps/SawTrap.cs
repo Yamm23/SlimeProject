@@ -8,12 +8,12 @@ public class TrapMovement2D : MonoBehaviour
     private Vector2 startPosition;        // Starting position of the trap
     private bool movingUp = true;         // Direction flag
     private TrapBehavior trapBehavior;
-    public GameObject slimeCharacter;
+    private Transform playerTransforms;
 
     void Start()
     {
         trapBehavior = new TrapBehavior();
-        slimeCharacter = GameObject.FindWithTag("Player");
+        playerTransforms = GameObject.FindGameObjectWithTag("Player").transform;
         startPosition = transform.position;  // Record the starting position
     }
 
