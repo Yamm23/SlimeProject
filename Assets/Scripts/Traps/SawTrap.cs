@@ -1,21 +1,33 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TrapMovement2D : MonoBehaviour
 {
     public float speed = 2f;              // Speed of the trap's movement
-    public float moveDistance = 3f;       // Distance the trap will move up and down
-
+    public float moveDistance = 5f;       // Distance the trap will move up and down
     private Vector2 startPosition;        // Starting position of the trap
     private bool movingUp = true;         // Direction flag
+    private TrapBehavior trapBehavior;
+    public GameObject slimeCharacter;
 
     void Start()
     {
+        trapBehavior = new TrapBehavior();
+        slimeCharacter = GameObject.FindWithTag("Player");
         startPosition = transform.position;  // Record the starting position
     }
 
     void Update()
     {
         MoveTrap();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            trapBehavior.TakeDamage();
+        }
     }
 
     void MoveTrap()
