@@ -12,9 +12,12 @@ public class TrapMovement2D : MonoBehaviour
 
     void Start()
     {
-        trapBehavior = new TrapBehavior();
         playerTransforms = GameObject.FindGameObjectWithTag("Player").transform;
+        trapBehavior = new TrapBehavior(
+            playerTransforms
+            );
         startPosition = transform.position;  // Record the starting position
+
     }
 
     void Update()
