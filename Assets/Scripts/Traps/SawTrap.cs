@@ -5,17 +5,18 @@ public class TrapMovement2D : MonoBehaviour
 {
     public float speed = 2f;              // Speed of the trap's movement
     public float moveDistance = 5f;       // Distance the trap will move up and down
+    public float damageAmount = 20f;
+    public float damageInterval = 0.5f;
     private Vector2 startPosition;        // Starting position of the trap
     private bool movingUp = true;         // Direction flag
     private TrapBehavior trapBehavior;
     private Transform playerTransforms;
+    private Coroutine damageCoroutine;
 
     void Start()
     {
         playerTransforms = GameObject.FindGameObjectWithTag("Player").transform;
-        trapBehavior = new TrapBehavior(
-            playerTransforms
-            );
+        trapBehavior = new TrapBehavior(playerTransforms);
         startPosition = transform.position;  // Record the starting position
 
     }
@@ -25,11 +26,21 @@ public class TrapMovement2D : MonoBehaviour
         MoveTrap();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && damageCoroutine == null)
         {
-            trapBehavior.TakeDamage();
+            damageCoroutine = StartCoroutine(trapBehavior.ApplyContinuousDamage(damageAmount, damageInterval));
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.transform.CompareTag("Player") && damageCoroutine !=null)
+        {
+            trapBehavior.StopDamage();
+            StopAllCoroutines();
+            damageCoroutine = null;
         }
     }
 

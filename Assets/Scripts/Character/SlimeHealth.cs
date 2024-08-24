@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SlimeHealth : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
     public int maxHearts = 3;
     public int currentHearts = 3;
     public Image[] hearts;
@@ -41,7 +41,7 @@ public class SlimeHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         if (!canTakeDamage)
         {

@@ -7,7 +7,7 @@ public class RespawnBoundary : MonoBehaviour
     public GameObject player;
     public GameObject respawnPoint;
     private SlimeHealth respawnslimeHealth;
-    private int currentHealth;
+    private float currentHealth;
     // Start is called before the first frame update
     void Start()
     {

@@ -6,24 +6,28 @@ public class TrapBehavior
 {
     private SlimeHealth playerHealth;
     private Transform playerTransform;
+    private bool isDamaging = false;
     public TrapBehavior(Transform player)
     {
         this.playerTransform = player;
         playerHealth = player.GetComponent<SlimeHealth>();
     }
-    public void Start()
+
+    public IEnumerator ApplyContinuousDamage(float damage, float interval)
     {
-        
-    }
-    public void TakeDamage()
-    {
-        if (playerHealth != null)
+        isDamaging = true;
+        while (isDamaging)
         {
-            playerHealth.TakeDamage(10);
-        }
-        else
-        {
-            Debug.Log("Player Health Component not found");
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
+            yield return new WaitForSeconds(interval);
         }
     }
+    public void StopDamage()
+    {
+        isDamaging = false;
+    }
+
 }
