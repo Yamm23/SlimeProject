@@ -4165,6 +4165,7 @@ GameObject:
   - component: {fileID: 264950961}
   - component: {fileID: 264950960}
   - component: {fileID: 264950959}
+  - component: {fileID: 264950964}
   m_Layer: 0
   m_Name: SpearTrap
   m_TagString: Untagged
@@ -4314,7 +4315,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!212 &264950963
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4367,6 +4368,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &264950964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264950957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb3fac63c246f547a31b32de4e3d472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &328383859
 GameObject:
   m_ObjectHideFlags: 0
