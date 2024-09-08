@@ -15,7 +15,7 @@ public class EnemyBehavior : MonoBehaviour
     private float attackRange;
     private bool isPlayerInRange = false;
     private bool isAttacking = false;
-    private bool facingRight = true; // Set to true by default
+    private bool facingRight = false; // Set to true by default
     private SkeletonController controller;
     private SlimeHealth playerHealth;
 
@@ -63,10 +63,18 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Patrol()
     {
-        Vector2 direction = currentPoint.position - enemyTransform.position;
+        // Get the current position and target position
+        Vector2 currentPosition = new Vector2(enemyTransform.position.x, 0);
+        Vector2 targetPosition = new Vector2(currentPoint.position.x, 0);
 
+        // Calculate the direction and distance
+        Vector2 direction = targetPosition - currentPosition;
+        float distanceToPoint = Vector2.Distance(currentPosition, targetPosition);
+
+        // Set the velocity based on the direction
         enemyRigidbody.velocity = new Vector2((currentPoint == pointB ? speed : -speed), enemyRigidbody.velocity.y);
 
+        // Flip sprite based on direction
         if (enemyRigidbody.velocity.x > 0 && !facingRight)
         {
             Flip();
@@ -76,11 +84,13 @@ public class EnemyBehavior : MonoBehaviour
             Flip();
         }
 
-        if (Vector2.Distance(enemyTransform.position, currentPoint.position) < 0.5f)
+        // Change the patrol point if close enough to the current point
+        if (distanceToPoint < 0.5f)
         {
             currentPoint = (currentPoint == pointB) ? pointA : pointB;
         }
     }
+
 
     private void DetectPlayer()
     {
