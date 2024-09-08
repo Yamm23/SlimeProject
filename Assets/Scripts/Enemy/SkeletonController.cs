@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SkeletonController : MonoBehaviour
@@ -13,41 +12,41 @@ public class SkeletonController : MonoBehaviour
     public float attackRange = 2f; // Default attack range
     private Animator skeletonAnimator;
     private EnemyBehavior enemyBehavior;
-    private Transform playerTransforms;
-
-
 
     private void Start()
     {
-        playerTransforms = GameObject.FindGameObjectWithTag("Player").transform;
+        Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         skeletonAnimator = GetComponent<Animator>();
 
-        if (pointA == null || pointB == null || skeletonRigidbody == null || playerTransforms == null)
+        if (pointA == null || pointB == null || skeletonRigidbody == null || playerTransform == null)
         {
             Debug.LogError("Required components are not assigned.");
             return;
         }
 
-        // Create an instance of EnemyBehavior with the required parameters
-        enemyBehavior = new EnemyBehavior(
+        // Add EnemyBehavior as a component to the SkeletonController GameObject
+        enemyBehavior = gameObject.AddComponent<EnemyBehavior>();
+
+        // Initialize the EnemyBehavior script
+        enemyBehavior.Setup(
             pointA.transform,
             pointB.transform,
-            playerTransforms,
+            playerTransform,
             skeletonRigidbody,
             transform,
             skeletonAnimator,
-            this // Pass the current instance of SkeletonController
+            this,
+            speed,
+            detectionRange,
+            attackRange
         );
-
-        // Set parameters for EnemyBehavior
-        enemyBehavior.SetParameters(speed, detectionRange, attackRange);
     }
 
     private void Update()
     {
         if (enemyBehavior != null)
         {
-            enemyBehavior.Update();
+            enemyBehavior.UpdateBehavior();
         }
     }
 

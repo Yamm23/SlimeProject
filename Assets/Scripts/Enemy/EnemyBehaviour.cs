@@ -1,8 +1,7 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyBehavior
+public class EnemyBehavior : MonoBehaviour
 {
     private Transform pointA;
     private Transform pointB;
@@ -16,12 +15,12 @@ public class EnemyBehavior
     private float attackRange;
     private bool isPlayerInRange = false;
     private bool isAttacking = false;
-    private bool facingRight = false;
+    private bool facingRight = true; // Set to true by default
     private SkeletonController controller;
     private SlimeHealth playerHealth;
 
-    // Constructor to initialize all required fields
-    public EnemyBehavior(Transform pointA, Transform pointB, Transform player, Rigidbody2D rb, Transform enemyTransform, Animator anim, SkeletonController controller)
+    // Setup method for initializing all required fields
+    public void Setup(Transform pointA, Transform pointB, Transform player, Rigidbody2D rb, Transform enemyTransform, Animator anim, SkeletonController controller, float speed, float detectionRange, float attackRange)
     {
         this.pointA = pointA;
         this.pointB = pointB;
@@ -31,17 +30,13 @@ public class EnemyBehavior
         this.enemyAnim = anim;
         this.controller = controller;
         this.playerHealth = player.GetComponent<SlimeHealth>();
-        currentPoint = pointB;
-    }
-
-    public void SetParameters(float speed, float detectionRange, float attackRange)
-    {
         this.speed = speed;
         this.detectionRange = detectionRange;
         this.attackRange = attackRange;
+        currentPoint = pointB;
     }
 
-    public void Update()
+    public void UpdateBehavior()
     {
         HandleAnimation();
 
@@ -70,14 +65,7 @@ public class EnemyBehavior
     {
         Vector2 direction = currentPoint.position - enemyTransform.position;
 
-        if (currentPoint == pointB)
-        {
-            enemyRigidbody.velocity = new Vector2(speed, enemyRigidbody.velocity.y);
-        }
-        else
-        {
-            enemyRigidbody.velocity = new Vector2(-speed, enemyRigidbody.velocity.y);
-        }
+        enemyRigidbody.velocity = new Vector2((currentPoint == pointB ? speed : -speed), enemyRigidbody.velocity.y);
 
         if (enemyRigidbody.velocity.x > 0 && !facingRight)
         {
@@ -104,11 +92,6 @@ public class EnemyBehavior
     {
         Vector2 direction = (playerTransform.position - enemyTransform.position).normalized;
         enemyRigidbody.velocity = new Vector2(direction.x * speed, enemyRigidbody.velocity.y);
-        if(Vector2.Distance(enemyTransform.position, pointA.position)<0.1f||(Vector2.Distance(enemyTransform.position, pointB.position) < 0.1f))
-        {
-            Patrol();
-        }
-
 
         if (direction.x > 0 && !facingRight)
         {
@@ -125,7 +108,6 @@ public class EnemyBehavior
         Debug.Log("Attacking the player!");
         isAttacking = true;
         enemyAnim.SetBool("isAttacking", true);
-        // Apply damage to the player
         if (Vector2.Distance(enemyTransform.position, playerTransform.position) <= attackRange)
         {
             playerHealth.TakeDamage(20); // Adjust damage value as needed
@@ -138,7 +120,6 @@ public class EnemyBehavior
     private void Flip()
     {
         facingRight = !facingRight;
-
         Vector3 theScale = enemyTransform.localScale;
         theScale.x *= -1;
         enemyTransform.localScale = theScale;
@@ -146,13 +127,6 @@ public class EnemyBehavior
 
     private void HandleAnimation()
     {
-        if (Mathf.Abs(enemyRigidbody.velocity.x) > 0.1f)
-        {
-            enemyAnim.SetBool("isWalking", true);
-        }
-        else
-        {
-            enemyAnim.SetBool("isWalking", false);
-        }
+        enemyAnim.SetBool("isWalking", Mathf.Abs(enemyRigidbody.velocity.x) > 0.1f);
     }
 }
