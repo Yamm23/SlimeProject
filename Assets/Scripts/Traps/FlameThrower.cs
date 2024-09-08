@@ -23,7 +23,6 @@ public class FlameThrower : MonoBehaviour
     public void PlayerDetection()
     {
         float distancetoPlayer = Vector2.Distance(transform.position, playerTransform.position);
-        Debug.Log($"Distance to Player :{distancetoPlayer})");
         if(distancetoPlayer <= detectionRange)
         {
             fireboxAnim.SetBool("inRange", true);

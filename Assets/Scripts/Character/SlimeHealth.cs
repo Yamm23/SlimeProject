@@ -103,7 +103,24 @@ public class SlimeHealth : MonoBehaviour
             StartCoroutine(DamageCooldown());
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (currentHearts < hearts.Length)
+        {
+            if (other.CompareTag("HeartsItem"))
+            {
+                currentHearts++;
+                Debug.Log("AddedHealth");
+                UpdateHearts();
+            }
+        }
+        else if (currentHearts == hearts.Length)
+        {
+            Debug.Log("Currently at maximum Health");
+        }
 
+        
+    }
     private IEnumerator DamageCooldown()
     {
         canTakeDamage = false;

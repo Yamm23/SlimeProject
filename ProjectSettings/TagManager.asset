@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Trap
   - Checkpoint
+  - HeartsItem
   layers:
   - Default
   - TransparentFX

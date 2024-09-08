@@ -3908,7 +3908,7 @@ Transform:
   m_GameObject: {fileID: 191021527}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 174.2, y: 31.6, z: 0}
+  m_LocalPosition: {x: 170.38, y: 29.44, z: 0}
   m_LocalScale: {x: 3.72, y: 3.33, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4111,7 +4111,7 @@ Transform:
   m_GameObject: {fileID: 191584357}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 174.2, y: 31.6, z: -10}
+  m_LocalPosition: {x: 170.38, y: 29.44, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55352,7 +55352,7 @@ Transform:
   m_GameObject: {fileID: 1505164366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 174.2, y: 31.6, z: -10}
+  m_LocalPosition: {x: 170.38, y: 29.44, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -55373,7 +55373,7 @@ GameObject:
   - component: {fileID: 1595615637}
   m_Layer: 0
   m_Name: Hearts
-  m_TagString: Untagged
+  m_TagString: HeartsItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55387,7 +55387,7 @@ Transform:
   m_GameObject: {fileID: 1595615635}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.044, y: 0.012, z: 0}
+  m_LocalPosition: {x: 2.65, y: -4.01, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
