@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TrapMovement2D : MonoBehaviour
@@ -9,16 +8,18 @@ public class TrapMovement2D : MonoBehaviour
     public float damageInterval = 0.5f;
     private Vector2 startPosition;        // Starting position of the trap
     private bool movingUp = true;         // Direction flag
-    private TrapBehavior trapBehavior;
-    private Transform playerTransforms;
     private Coroutine damageCoroutine;
+
+    private TrapManager trapManager;
 
     void Start()
     {
-        playerTransforms = GameObject.FindGameObjectWithTag("Player").transform;
-        trapBehavior = new TrapBehavior(playerTransforms);
         startPosition = transform.position;  // Record the starting position
 
+        // Initialize TrapManager and pass player reference
+        trapManager = gameObject.AddComponent<TrapManager>(); // Add TrapManager component
+        Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        trapManager.Initialize(playerTransform);
     }
 
     void Update()
@@ -30,16 +31,16 @@ public class TrapMovement2D : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && damageCoroutine == null)
         {
-            damageCoroutine = StartCoroutine(trapBehavior.ApplyContinuousDamage(damageAmount, damageInterval));
+            damageCoroutine = StartCoroutine(trapManager.ApplyContinuousDamage(damageAmount, damageInterval));
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.transform.CompareTag("Player") && damageCoroutine !=null)
+        if (other.CompareTag("Player") && damageCoroutine != null)
         {
-            trapBehavior.StopDamage();
-            StopAllCoroutines();
+            trapManager.StopDamage();
+            StopCoroutine(damageCoroutine);
             damageCoroutine = null;
         }
     }
@@ -61,3 +62,4 @@ public class TrapMovement2D : MonoBehaviour
         }
     }
 }
+

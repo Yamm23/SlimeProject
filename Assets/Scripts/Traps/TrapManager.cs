@@ -1,13 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapBehavior
+public class TrapManager : MonoBehaviour
 {
     private SlimeHealth playerHealth;
     private Transform playerTransform;
     private bool isDamaging = false;
-    public TrapBehavior(Transform player)
+
+    // Method to initialize the TrapManager with the player reference
+    public void Initialize(Transform player)
     {
         this.playerTransform = player;
         playerHealth = player.GetComponent<SlimeHealth>();
@@ -25,9 +26,10 @@ public class TrapBehavior
             yield return new WaitForSeconds(interval);
         }
     }
+
     public void StopDamage()
     {
         isDamaging = false;
     }
-
 }
+

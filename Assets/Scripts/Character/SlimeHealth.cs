@@ -105,19 +105,22 @@ public class SlimeHealth : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (currentHearts < hearts.Length)
+        if (other.CompareTag("HeartsItem"))
         {
-            if (other.CompareTag("HeartsItem"))
+            
+            if (currentHearts < hearts.Length)
             {
                 currentHearts++;
                 Debug.Log("AddedHealth");
                 UpdateHearts();
+                Destroy(other.gameObject);
+            }
+            else if (currentHearts == hearts.Length)
+            {
+                Debug.Log("Currently at maximum Health");
             }
         }
-        else if (currentHearts == hearts.Length)
-        {
-            Debug.Log("Currently at maximum Health");
-        }
+        
 
         
     }
