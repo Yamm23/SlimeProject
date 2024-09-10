@@ -58,9 +58,15 @@ TagManager:
   - name: Items
     uniqueID: 2960489157
     locked: 0
+  - name: Ground
+    uniqueID: 1323208505
+    locked: 0
   - name: Walls
     uniqueID: 1677248295
     locked: 0
   - name: Enemy
     uniqueID: 648514017
+    locked: 0
+  - name: WallDecorations
+    uniqueID: 2453208207
     locked: 0
