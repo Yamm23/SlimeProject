@@ -10,6 +10,8 @@ public class PauseMenu : MonoBehaviour
     private bool gameisOver = false;
     public GameObject pauseMenuUI;
     public GameObject gameOverUI;
+    public GameObject levelComplete;
+    public CoinManager coinManager;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -58,6 +60,11 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Quittng Game");
         Application.Quit();
+    }
+    public void LevelComplete()
+    {
+        levelComplete.SetActive(true);
+        coinManager.OnGameComplete();
     }
 
 }

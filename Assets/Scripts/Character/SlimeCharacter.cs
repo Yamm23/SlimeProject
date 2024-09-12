@@ -7,6 +7,7 @@ public class Slime : MonoBehaviour
     private SlimeMovement slimeMovement;
     private SlimeHealth slimeHealth;
     public CoinManager cm;
+    public PauseMenu pauseMenu;
 
     void Awake()
     {
@@ -26,6 +27,13 @@ public class Slime : MonoBehaviour
         {
             Destroy(other.gameObject);
             cm.AddCoin();
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Finish"))
+        { 
+            pauseMenu.LevelComplete();
         }
     }
 }
