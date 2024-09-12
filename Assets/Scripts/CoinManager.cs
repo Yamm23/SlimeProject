@@ -21,6 +21,7 @@ public class CoinManager : MonoBehaviour
     {
         coinCount++;
         UpdateCoinText();
+        UpdateCollectedCoins();
     }
 
     void UpdateCollectedCoins()
