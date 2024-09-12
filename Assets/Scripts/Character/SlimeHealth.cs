@@ -18,6 +18,7 @@ public class SlimeHealth : MonoBehaviour
     public float damageCooldown = 1.0f;
     public Animator slimeAnimator;
     public float takeDamageDuration = 0.5f;
+    public PauseMenu pauseMenu;
 
     void Start()
     {
@@ -81,7 +82,10 @@ public class SlimeHealth : MonoBehaviour
     {
         UpdateHearts();
         Debug.Log("SlimeDied");
-        gameObject.SetActive(false); // Deactivate the slime object
+        gameObject.SetActive(false);
+        pauseMenu.GameOver();
+
+        // Deactivate the slime object
         // Additional game over logic can go here
     }
 

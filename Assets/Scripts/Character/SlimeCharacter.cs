@@ -25,7 +25,7 @@ public class Slime : MonoBehaviour
         if(other.gameObject.CompareTag("CoinItem"))
         {
             Destroy(other.gameObject);
-            cm.coinCount++;
+            cm.AddCoin();
         }
     }
 }
