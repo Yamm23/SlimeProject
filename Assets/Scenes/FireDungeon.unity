@@ -7258,8 +7258,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f354ca7ea4ab43249af1d6727cc3c9a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myrigidBody: {fileID: 1716107344}
+  myRigidbody: {fileID: 0}
   speed: 5
+  jumpForce: 25
+  slimeanimator: {fileID: 0}
 --- !u!212 &1716107342
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7309,7 +7311,7 @@ SpriteRenderer:
   m_Size: {x: 9.6, y: 9.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1716107343
