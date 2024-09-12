@@ -9,4 +9,12 @@ public class MainMenuScript : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
     }
+    public void Settings()
+    {
+
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
