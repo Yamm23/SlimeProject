@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     private bool gameisPaused = false;
-    private bool gameisOver = false;
     public GameObject pauseMenuUI;
     public GameObject gameOverUI;
     public GameObject levelComplete;
@@ -28,7 +27,6 @@ public class PauseMenu : MonoBehaviour
     }
     public void GameOver()
     {
-        gameisOver = true;  
         gameOverUI.SetActive(true);
         Time.timeScale = 0f;
     }

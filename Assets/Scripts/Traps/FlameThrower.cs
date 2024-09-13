@@ -7,7 +7,7 @@ public class FlameThrower : MonoBehaviour
     public GameObject flame;
     private Transform playerTransform;
     private Animator fireboxAnim;
-    public float detectionRange = 10.0f;
+    public float detectionRange = 30.0f;
     // Start is called before the first frame update
     void Start()
     {

@@ -2,20 +2,19 @@ using UnityEngine;
 
 public class TrapMovement2D : MonoBehaviour
 {
-    public float speed = 2f;              // Speed of the trap's movement
-    public float moveDistance = 5f;       // Distance the trap will move up and down
-    public float damageAmount = 20f;
-    public float damageInterval = 0.5f;
-    private Vector2 startPosition;        // Starting position of the trap
-    private bool movingUp = true;         // Direction flag
+    public float speed = 2f;                  // Speed of the trap's movement
+    public float damageAmount = 20f;          // Damage dealt to the player
+    public float damageInterval = 0.5f;       // Time between damage ticks
     private Coroutine damageCoroutine;
+
+    public Transform startPoint;              // Starting point of the trap's movement
+    public Transform endPoint;                // End point of the trap's movement
+    private int direction = 1;                // Direction of movement (1 = towards endPoint, -1 = towards startPoint)
 
     private TrapManager trapManager;
 
     void Start()
     {
-        startPosition = transform.position;  // Record the starting position
-
         // Initialize TrapManager and pass player reference
         trapManager = gameObject.AddComponent<TrapManager>(); // Add TrapManager component
         Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -47,19 +46,36 @@ public class TrapMovement2D : MonoBehaviour
 
     void MoveTrap()
     {
-        // Calculate the target position based on direction
-        float targetY = movingUp ? startPosition.y + moveDistance : startPosition.y - moveDistance;
-        Vector2 targetPosition = new Vector2(transform.position.x, targetY);
+        // Determine the target position based on the current direction
+        Vector2 targetPosition = direction == 1 ? endPoint.position : startPoint.position;
 
         // Move the trap towards the target position
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-        // Check if the trap reached the target position
-        if (Mathf.Abs(transform.position.y - targetY) < 0.1f)
+        // Check if the trap has reached the target position
+        if (Vector2.Distance(transform.position, targetPosition) <= 0.1f)
         {
             // Reverse the direction
-            movingUp = !movingUp;
+            direction *= -1;
+        }
+    }
+
+    // Draw Gizmos to visualize the start and end points
+    private void OnDrawGizmos()
+    {
+        if (startPoint != null && endPoint != null)
+        {
+            // Draw a line between startPoint and endPoint
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(startPoint.position, endPoint.position);
+
+            // Draw a sphere at the startPoint
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(startPoint.position, 0.1f);
+
+            // Draw a sphere at the endPoint
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(endPoint.position, 0.1f);
         }
     }
 }
-

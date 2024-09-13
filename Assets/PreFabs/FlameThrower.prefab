@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flame: {fileID: 7908894026694897281}
-  detectionRange: 10
+  detectionRange: 30
 --- !u!1 &7908894026694897281
 GameObject:
   m_ObjectHideFlags: 0
