@@ -33,12 +33,14 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
        gameisPaused = false;
+        AudioManager.instance.Play("Unpause");
        pauseMenuUI.SetActive(false);
        Time.timeScale = 1.0f;
     }
     public void Pause()
     {
         gameisPaused = true;
+        AudioManager.instance.Play("Pause");
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
     }

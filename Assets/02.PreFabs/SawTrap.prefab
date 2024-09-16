@@ -258,8 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdeefb2a106df0479f09db0377dbfc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  damageAmount: 20
+  speed: 10
+  damageAmount: 40
   damageInterval: 0.5
   startPoint: {fileID: 833890019425822472}
   endPoint: {fileID: 8231758819929840288}

@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb3fac63c246f547a31b32de4e3d472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 20
+  damageAmount: 40
   damageInterval: 0.5
+  soundTriggerDistance: 10
   tipCollider: {fileID: 0}

@@ -2,28 +2,40 @@ using UnityEngine;
 
 public class TrapMovement2D : MonoBehaviour
 {
-    public float speed = 2f;                  // Speed of the trap's movement
-    public float damageAmount = 20f;          // Damage dealt to the player
+    public float speed = 10f;                  // Speed of the trap's movement
+    public float damageAmount = 40f;          // Damage dealt to the player
     public float damageInterval = 0.5f;       // Time between damage ticks
+    public float soundtriggerDistance = 20.0f;
     private Coroutine damageCoroutine;
 
     public Transform startPoint;              // Starting point of the trap's movement
     public Transform endPoint;                // End point of the trap's movement
     private int direction = 1;                // Direction of movement (1 = towards endPoint, -1 = towards startPoint)
-
+    public float soundTriggerDistance = 20.0f;
     private TrapManager trapManager;
+    private Transform playerTransform;
 
     void Start()
     {
         // Initialize TrapManager and pass player reference
         trapManager = gameObject.AddComponent<TrapManager>(); // Add TrapManager component
-        Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         trapManager.Initialize(playerTransform);
+    }
+    public void SawPlaySound()
+    {
+        AudioManager.instance.Play("Spear");
     }
 
     void Update()
     {
         MoveTrap();
+        float distancetoPlayer = Vector3.Distance(playerTransform.position, transform.position);
+        if (distancetoPlayer > soundtriggerDistance)
+        {
+            SawPlaySound();
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
