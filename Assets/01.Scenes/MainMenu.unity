@@ -461,7 +461,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Saw
     clip: {fileID: 8300000, guid: b3fafaff1b04133459c2bd43d1c972fa, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}

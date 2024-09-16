@@ -7,7 +7,6 @@ public class TrapManager : MonoBehaviour
     private Transform playerTransform;
     private bool isDamaging = false;
 
-    // Method to initialize the TrapManager with the player reference
     public void Initialize(Transform player)
     {
         this.playerTransform = player;
@@ -32,4 +31,3 @@ public class TrapManager : MonoBehaviour
         isDamaging = false;
     }
 }
-

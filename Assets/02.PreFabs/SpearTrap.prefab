@@ -231,5 +231,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 40
   damageInterval: 0.5
-  soundTriggerDistance: 10
+  soundTriggerDistance: 20
   tipCollider: {fileID: 0}

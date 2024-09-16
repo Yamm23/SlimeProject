@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 9168227606581734118}
   m_Layer: 0
   m_Name: SawTrap
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,7 +90,7 @@ Transform:
   m_GameObject: {fileID: 5928130358814889006}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 182.64, y: 36.07, z: 0}
+  m_LocalPosition: {x: 182.77, y: 30.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -258,9 +258,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdeefb2a106df0479f09db0377dbfc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
   damageAmount: 40
   damageInterval: 0.5
+  soundTriggerDistance: 20
   startPoint: {fileID: 833890019425822472}
   endPoint: {fileID: 8231758819929840288}
 --- !u!95 &347500449244864161

@@ -2,57 +2,59 @@ using UnityEngine;
 
 public class TrapMovement2D : MonoBehaviour
 {
-    public float speed = 10f;                  // Speed of the trap's movement
-    public float damageAmount = 40f;          // Damage dealt to the player
-    public float damageInterval = 0.5f;       // Time between damage ticks
-    public float soundtriggerDistance = 20.0f;
-    private Coroutine damageCoroutine;
+    public float speed = 10f; // Speed of the trap's movement
+    public float damageAmount = 40f; // Damage dealt to the player
+    public float damageInterval = 0.5f; // Time between damage ticks
+    public float soundTriggerDistance = 20.0f; // Distance to trigger sound
+    private bool hasPlayedSound = false; // Flag to manage sound state
 
-    public Transform startPoint;              // Starting point of the trap's movement
-    public Transform endPoint;                // End point of the trap's movement
-    private int direction = 1;                // Direction of movement (1 = towards endPoint, -1 = towards startPoint)
-    public float soundTriggerDistance = 20.0f;
+    public Transform startPoint; // Starting point of the trap's movement
+    public Transform endPoint; // End point of the trap's movement
+    private int direction = 1; // Direction of movement (1 = towards endPoint, -1 = towards startPoint)
     private TrapManager trapManager;
     private Transform playerTransform;
 
     void Start()
     {
         // Initialize TrapManager and pass player reference
-        trapManager = gameObject.AddComponent<TrapManager>(); // Add TrapManager component
+        trapManager = gameObject.AddComponent<TrapManager>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         trapManager.Initialize(playerTransform);
     }
+
     public void SawPlaySound()
     {
-        AudioManager.instance.Play("Spear");
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Saw");
+        }
+    }
+
+    public void StopSawSound()
+    {
+        AudioManager.instance.Stop("Saw");
     }
 
     void Update()
     {
         MoveTrap();
-        float distancetoPlayer = Vector3.Distance(playerTransform.position, transform.position);
-        if (distancetoPlayer > soundtriggerDistance)
+        float distanceToPlayer = Vector3.Distance(playerTransform.position, transform.position);
+
+        if (distanceToPlayer < soundTriggerDistance)
         {
-            SawPlaySound();
+            if (!hasPlayedSound)
+            {
+                SawPlaySound();
+                hasPlayedSound = true;
+            }
         }
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player") && damageCoroutine == null)
+        else
         {
-            damageCoroutine = StartCoroutine(trapManager.ApplyContinuousDamage(damageAmount, damageInterval));
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && damageCoroutine != null)
-        {
-            trapManager.StopDamage();
-            StopCoroutine(damageCoroutine);
-            damageCoroutine = null;
+            if (hasPlayedSound)
+            {
+                StopSawSound();
+                hasPlayedSound = false;
+            }
         }
     }
 
@@ -72,7 +74,28 @@ public class TrapMovement2D : MonoBehaviour
         }
     }
 
-    // Draw Gizmos to visualize the start and end points
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Assuming player has the "SlimeHealth" component
+            SlimeHealth playerHealth = other.GetComponent<SlimeHealth>();
+
+            if (playerHealth != null)
+            {
+                trapManager.StartCoroutine(trapManager.ApplyContinuousDamage(damageAmount, damageInterval));
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Stop applying damage when the player exits the trigger area
+            trapManager.StopDamage();
+        }
+    }
+
     private void OnDrawGizmos()
     {
         if (startPoint != null && endPoint != null)
