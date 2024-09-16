@@ -25,6 +25,7 @@ public class Slime : MonoBehaviour
     {
         if(other.gameObject.CompareTag("CoinItem"))
         {
+            AudioManager.instance.Play("Coin");
             Destroy(other.gameObject);
             cm.AddCoin();
         }
