@@ -14,7 +14,6 @@ public class CoinManager : MonoBehaviour
 
     void Start()
     {
-        // Count all the coins in the scene using the tag "CoinItem"
         totalCoins = GameObject.FindGameObjectsWithTag("CoinItem").Length;
         UpdateCoinText();
     }
