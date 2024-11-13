@@ -38,7 +38,7 @@ public class SlimeMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && (isGrounded || jumpCount < 2))
         {
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0); // Reset vertical velocity before jumping
-            AudioManager.instance.Play("Jump");
+            //AudioManager.instance.Play("Jump");
             myRigidbody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             jumpCount++;
             isGrounded = false; // Player is no longer grounded
