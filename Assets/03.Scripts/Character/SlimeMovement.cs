@@ -6,6 +6,7 @@ public class SlimeMovement : MonoBehaviour
 {
     public Rigidbody2D myRigidbody;
     public float speed = 8.0f;
+    public float sprintMultiplier = 2f;
     public float jumpForce = 25.0f;
     private int jumpCount = 0;
     private bool isGrounded = true;
@@ -20,7 +21,8 @@ public class SlimeMovement : MonoBehaviour
     {
         // Handle horizontal movement
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        Vector2 movement = new Vector2(moveHorizontal * speed, myRigidbody.velocity.y);
+        float currentSpeed = Input.GetKeyDown(KeyCode.LeftShift) ? speed * sprintMultiplier : speed;
+        Vector2 movement = new Vector2(moveHorizontal * currentSpeed, myRigidbody.velocity.y);
         myRigidbody.velocity = movement;
         slimeanimator.SetFloat("HorizontalSpeed", Mathf.Abs(moveHorizontal));
 
