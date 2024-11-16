@@ -1464,11 +1464,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f354ca7ea4ab43249af1d6727cc3c9a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myRigidbody: {fileID: 191021528}
   speed: 10
-  sprintMultiplier: 2
   jumpForce: 25
+  dashSpeed: 25
+  dashDuration: 0.2
+  dashCooldown: 1
   slimeanimator: {fileID: 361433531}
+  myRigidbody: {fileID: 191021528}
 --- !u!114 &191021540
 MonoBehaviour:
   m_ObjectHideFlags: 0

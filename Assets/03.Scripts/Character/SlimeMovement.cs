@@ -9,7 +9,7 @@ public class SlimeMovement : MonoBehaviour
     private int jumpCount = 0;
     public float dashSpeed = 100.0f;
     public float dashDuration = 1.0f;
-    public float dashCooldown = 1.0f;
+    [SerializeField] private float dashCooldown = 1.0f;
 
     public Animator slimeanimator;
     public Rigidbody2D myRigidbody;
