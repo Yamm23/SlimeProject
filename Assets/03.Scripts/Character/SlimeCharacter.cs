@@ -19,6 +19,7 @@ public class Slime : MonoBehaviour
     {
         // Call update methods on the individual components if needed
         slimeMovement.HandleMovement();
+        slimeMovement.HandleDash();
         
     }
     private void OnTriggerEnter2D(Collider2D other)

@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class SlimeMovement : MonoBehaviour
 {
-    public Rigidbody2D myRigidbody;
     public float speed = 8.0f;
-    public float sprintMultiplier = 2f;
     public float jumpForce = 25.0f;
     private int jumpCount = 0;
-    private bool isGrounded = true;
+    public float dashSpeed = 100.0f;
+    public float dashDuration = 1.0f;
+    public float dashCooldown = 1.0f;
+
     public Animator slimeanimator;
+    public Rigidbody2D myRigidbody;
+
+    private bool isGrounded = true;
     private bool facingRight = true;
+    private bool isDashing = false;
+
+    private float dashCooldownTime;
+    
+
+
     public void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -19,10 +29,10 @@ public class SlimeMovement : MonoBehaviour
 
     public void HandleMovement()
     {
+        if (isDashing) return;
         // Handle horizontal movement
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        float currentSpeed = Input.GetKeyDown(KeyCode.LeftShift) ? speed * sprintMultiplier : speed;
-        Vector2 movement = new Vector2(moveHorizontal * currentSpeed, myRigidbody.velocity.y);
+        Vector2 movement = new Vector2(moveHorizontal * speed, myRigidbody.velocity.y);
         myRigidbody.velocity = movement;
         slimeanimator.SetFloat("HorizontalSpeed", Mathf.Abs(moveHorizontal));
 
@@ -47,8 +57,15 @@ public class SlimeMovement : MonoBehaviour
             slimeanimator.SetBool("IsJumping", true);
             Debug.Log("Jump button pressed. Current jump count: " + jumpCount);
         }
+        
     }
-
+    public void HandleDash()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time > dashCooldownTime)
+        {
+            StartCoroutine(Dash());
+        }
+    }
     // Check if the character is grounded
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -75,5 +92,17 @@ public class SlimeMovement : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+    private IEnumerator Dash()
+    {
+        isDashing = true;
+        Debug.Log("Dashing Accessed!!!");
+        float originalSpeed = speed;
+        Debug.Log("Dash direction: " + transform.localScale.x);
+        myRigidbody.velocity = new Vector2(transform.localScale.x * dashSpeed, myRigidbody.velocity.y);
+        yield return new WaitForSeconds(dashDuration);
+        isDashing = false;
+        dashCooldownTime = Time.time + dashCooldown;
+        myRigidbody.velocity = Vector2.zero;
     }
 }
