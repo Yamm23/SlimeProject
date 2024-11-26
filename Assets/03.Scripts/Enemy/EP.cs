@@ -54,19 +54,19 @@ public class EnemyPatrolScript : MonoBehaviour
 
         if (currentPoint == pointB.transform)
         {
-            skeletonRigidbody.velocity = new Vector2(speed, skeletonRigidbody.velocity.y);
+            skeletonRigidbody.linearVelocity = new Vector2(speed, skeletonRigidbody.linearVelocity.y);
         }
         else
         {
-            skeletonRigidbody.velocity = new Vector2(-speed, skeletonRigidbody.velocity.y);
+            skeletonRigidbody.linearVelocity = new Vector2(-speed, skeletonRigidbody.linearVelocity.y);
         }
 
         // Check if the skeleton needs to flip direction
-        if (skeletonRigidbody.velocity.x > 0 && !facingRight)
+        if (skeletonRigidbody.linearVelocity.x > 0 && !facingRight)
         {
             Flip();
         }
-        else if (skeletonRigidbody.velocity.x < 0 && facingRight)
+        else if (skeletonRigidbody.linearVelocity.x < 0 && facingRight)
         {
             Flip();
         }
@@ -98,7 +98,7 @@ public class EnemyPatrolScript : MonoBehaviour
     void FollowPlayer()
     {
         Vector2 direction = (player.position - transform.position).normalized;
-        skeletonRigidbody.velocity = new Vector2(direction.x * speed, skeletonRigidbody.velocity.y);
+        skeletonRigidbody.linearVelocity = new Vector2(direction.x * speed, skeletonRigidbody.linearVelocity.y);
 
         if (direction.x > 0 && !facingRight)
         {
@@ -130,7 +130,7 @@ public class EnemyPatrolScript : MonoBehaviour
 
     private void HandleAnimation()
     {
-        if (Mathf.Abs(skeletonRigidbody.velocity.x) > 0.1f)
+        if (Mathf.Abs(skeletonRigidbody.linearVelocity.x) > 0.1f)
         {
             skeletonAnim.SetBool("isWalking", true);
         }

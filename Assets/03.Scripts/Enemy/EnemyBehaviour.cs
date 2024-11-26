@@ -72,14 +72,14 @@ public class EnemyBehavior : MonoBehaviour
         float distanceToPoint = Vector2.Distance(currentPosition, targetPosition);
 
         // Set the velocity based on the direction
-        enemyRigidbody.velocity = new Vector2((currentPoint == pointB ? speed : -speed), enemyRigidbody.velocity.y);
+        enemyRigidbody.linearVelocity = new Vector2((currentPoint == pointB ? speed : -speed), enemyRigidbody.linearVelocity.y);
 
         // Flip sprite based on direction
-        if (enemyRigidbody.velocity.x > 0 && !facingRight)
+        if (enemyRigidbody.linearVelocity.x > 0 && !facingRight)
         {
             Flip();
         }
-        else if (enemyRigidbody.velocity.x < 0 && facingRight)
+        else if (enemyRigidbody.linearVelocity.x < 0 && facingRight)
         {
             Flip();
         }
@@ -101,7 +101,7 @@ public class EnemyBehavior : MonoBehaviour
     private void FollowPlayer()
     {
         Vector2 direction = (playerTransform.position - enemyTransform.position).normalized;
-        enemyRigidbody.velocity = new Vector2(direction.x * speed, enemyRigidbody.velocity.y);
+        enemyRigidbody.linearVelocity = new Vector2(direction.x * speed, enemyRigidbody.linearVelocity.y);
 
         if (direction.x > 0 && !facingRight)
         {
@@ -137,6 +137,6 @@ public class EnemyBehavior : MonoBehaviour
 
     private void HandleAnimation()
     {
-        enemyAnim.SetBool("isWalking", Mathf.Abs(enemyRigidbody.velocity.x) > 0.1f);
+        enemyAnim.SetBool("isWalking", Mathf.Abs(enemyRigidbody.linearVelocity.x) > 0.1f);
     }
 }

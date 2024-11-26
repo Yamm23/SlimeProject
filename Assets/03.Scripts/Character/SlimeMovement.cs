@@ -32,8 +32,8 @@ public class SlimeMovement : MonoBehaviour
         if (isDashing) return;
         // Handle horizontal movement
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        Vector2 movement = new Vector2(moveHorizontal * speed, myRigidbody.velocity.y);
-        myRigidbody.velocity = movement;
+        Vector2 movement = new Vector2(moveHorizontal * speed, myRigidbody.linearVelocity.y);
+        myRigidbody.linearVelocity = movement;
         slimeanimator.SetFloat("HorizontalSpeed", Mathf.Abs(moveHorizontal));
 
         // Flip the character's facing direction
@@ -49,7 +49,7 @@ public class SlimeMovement : MonoBehaviour
         // Handle jumping
         if (Input.GetButtonDown("Jump") && (isGrounded || jumpCount < 2))
         {
-            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0); // Reset vertical velocity before jumping
+            myRigidbody.linearVelocity = new Vector2(myRigidbody.linearVelocity.x, 0); // Reset vertical velocity before jumping
             //AudioManager.instance.Play("Jump");
             myRigidbody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             jumpCount++;
@@ -99,10 +99,10 @@ public class SlimeMovement : MonoBehaviour
         Debug.Log("Dashing Accessed!!!");
         float originalSpeed = speed;
         Debug.Log("Dash direction: " + transform.localScale.x);
-        myRigidbody.velocity = new Vector2(transform.localScale.x * dashSpeed, myRigidbody.velocity.y);
+        myRigidbody.linearVelocity = new Vector2(transform.localScale.x * dashSpeed, myRigidbody.linearVelocity.y);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         dashCooldownTime = Time.time + dashCooldown;
-        myRigidbody.velocity = Vector2.zero;
+        myRigidbody.linearVelocity = Vector2.zero;
     }
 }
