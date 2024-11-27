@@ -19,19 +19,18 @@ public class SlimeMovement : MonoBehaviour
     private bool isDashing = false;
 
     private float dashCooldownTime;
-    
 
-
-    public void Awake()
+    private void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    public void HandleMovement()
+    // Handles the horizontal movement when the state is Moving
+    public void HandleMovement(float moveHorizontal)
     {
         if (isDashing) return;
+
         // Handle horizontal movement
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
         Vector2 movement = new Vector2(moveHorizontal * speed, myRigidbody.linearVelocity.y);
         myRigidbody.linearVelocity = movement;
         slimeanimator.SetFloat("HorizontalSpeed", Mathf.Abs(moveHorizontal));
@@ -45,27 +44,31 @@ public class SlimeMovement : MonoBehaviour
         {
             Flip();
         }
+    }
 
-        // Handle jumping
-        if (Input.GetButtonDown("Jump") && (isGrounded || jumpCount < 2))
+    // Handles jumping when the state is Jumping
+    public void HandleJumping()
+    {
+        if (isGrounded || jumpCount < 2)
         {
             myRigidbody.linearVelocity = new Vector2(myRigidbody.linearVelocity.x, 0); // Reset vertical velocity before jumping
-            //AudioManager.instance.Play("Jump");
             myRigidbody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             jumpCount++;
             isGrounded = false; // Player is no longer grounded
             slimeanimator.SetBool("IsJumping", true);
             Debug.Log("Jump button pressed. Current jump count: " + jumpCount);
         }
-        
     }
+
+    // Handles dashing when the state is Dashing
     public void HandleDash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time > dashCooldownTime)
+        if (Time.time > dashCooldownTime)
         {
             StartCoroutine(Dash());
         }
     }
+
     // Check if the character is grounded
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -93,14 +96,19 @@ public class SlimeMovement : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+
+    // Coroutine for handling dash action
     private IEnumerator Dash()
     {
         isDashing = true;
         Debug.Log("Dashing Accessed!!!");
         float originalSpeed = speed;
-        Debug.Log("Dash direction: " + transform.localScale.x);
+
         myRigidbody.linearVelocity = new Vector2(transform.localScale.x * dashSpeed, myRigidbody.linearVelocity.y);
+
+        // Wait for the dash to finish
         yield return new WaitForSeconds(dashDuration);
+
         isDashing = false;
         dashCooldownTime = Time.time + dashCooldown;
         myRigidbody.linearVelocity = Vector2.zero;

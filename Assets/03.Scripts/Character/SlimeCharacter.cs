@@ -18,7 +18,7 @@ public class Slime : MonoBehaviour
     void Update()
     {
         // Call update methods on the individual components if needed
-        slimeMovement.HandleMovement();
+        
         slimeMovement.HandleDash();
         
     }
